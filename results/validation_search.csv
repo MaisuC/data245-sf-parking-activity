@@ -1,0 +1,16 @@
+model,parameters,validation_macro_f1
+Logistic Regression,"LogisticRegression(C=0.1, max_iter=1500, random_state=245)",0.6473301464162999
+Logistic Regression,"LogisticRegression(C=1, max_iter=1500, random_state=245)",0.6502898926964348
+Logistic Regression,"LogisticRegression(C=10, max_iter=1500, random_state=245)",0.6504787892207508
+KNN,"KNeighborsClassifier(n_neighbors=7, weights='distance')",0.6112440794917057
+KNN,"KNeighborsClassifier(n_neighbors=21, weights='distance')",0.6563327470136548
+KNN,"KNeighborsClassifier(n_neighbors=51, weights='distance')",0.6472750015032654
+Decision Tree,"DecisionTreeClassifier(max_depth=4, min_samples_leaf=15, random_state=245)",0.6270213430634705
+Decision Tree,"DecisionTreeClassifier(max_depth=8, min_samples_leaf=15, random_state=245)",0.6347626410699551
+Decision Tree,"DecisionTreeClassifier(max_depth=12, min_samples_leaf=15, random_state=245)",0.6385101608966354
+Random Forest,"RandomForestClassifier(max_depth=6, min_samples_leaf=8, n_estimators=150,
+                       n_jobs=2, random_state=245)",0.6463735289838036
+Random Forest,"RandomForestClassifier(max_depth=10, min_samples_leaf=8, n_estimators=150,
+                       n_jobs=2, random_state=245)",0.6495693092602731
+Random Forest,"RandomForestClassifier(min_samples_leaf=8, n_estimators=150, n_jobs=2,
+                       random_state=245)",0.6559785073720368

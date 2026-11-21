@@ -1,0 +1,11 @@
+{
+  "comparison": "KNN minus Seasonal baseline, chronological-test macro F1",
+  "point_difference": -0.011565292402524241,
+  "paired_day_bootstrap_95_percentile_interval": [
+    -0.03785561380114122,
+    0.01635117509794416
+  ],
+  "replicates": 1000,
+  "test_dates": 8,
+  "caveat": "Descriptive interval from few test dates; adjacent dates can remain dependent. Not evidence of citywide or seasonal generalization."
+}

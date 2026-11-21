@@ -1,0 +1,12 @@
+__pycache__/
+.DS_Store
+.ipynb_checkpoints/
+.venv/
+.build/
+data/raw/meters.json
+data/raw/queries/
+data/raw/transaction_sample.json
+*.log
+*.aux
+*.out
+*.toc

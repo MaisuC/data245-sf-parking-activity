@@ -1,0 +1,19 @@
+[
+  {
+    "hour_sin":0.7071067812,
+    "hour_cos":-0.7071067812,
+    "dow_sin":0.4338837391,
+    "dow_cos":-0.9009688679,
+    "is_saturday":0,
+    "supply":12,
+    "latitude":37.7824757922,
+    "longitude":-122.4666094167,
+    "pressure_lag1":0.0,
+    "pressure_lag2":0.1666666667,
+    "pressure_lag24":0.3333333333,
+    "pressure_lag168":0.1666666667,
+    "pressure_rolling3":0.0555555556,
+    "blockface_id":"108031",
+    "target_start":"2026-10-22T09:00:00"
+  }
+]

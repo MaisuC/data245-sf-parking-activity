@@ -1,0 +1,134 @@
+{
+  "Logistic Regression": {
+    "Low payment activity": {
+      "precision": 0.8292682926829268,
+      "recall": 0.7208480565371025,
+      "f1-score": 0.7712665406427222,
+      "support": 283.0
+    },
+    "Medium payment activity": {
+      "precision": 0.5870535714285714,
+      "recall": 0.699468085106383,
+      "f1-score": 0.6383495145631068,
+      "support": 376.0
+    },
+    "High payment activity": {
+      "precision": 0.6283185840707964,
+      "recall": 0.5440613026819924,
+      "f1-score": 0.5831622176591376,
+      "support": 261.0
+    },
+    "accuracy": 0.6619565217391304,
+    "macro avg": {
+      "precision": 0.6815468160607648,
+      "recall": 0.654792481441826,
+      "f1-score": 0.6642594242883222,
+      "support": 920.0
+    },
+    "weighted avg": {
+      "precision": 0.6732676305748794,
+      "recall": 0.6619565217391304,
+      "f1-score": 0.6635795513985363,
+      "support": 920.0
+    }
+  },
+  "KNN": {
+    "Low payment activity": {
+      "precision": 0.8873873873873874,
+      "recall": 0.696113074204947,
+      "f1-score": 0.7801980198019802,
+      "support": 283.0
+    },
+    "Medium payment activity": {
+      "precision": 0.5809128630705395,
+      "recall": 0.7446808510638298,
+      "f1-score": 0.6526806526806527,
+      "support": 376.0
+    },
+    "High payment activity": {
+      "precision": 0.6435185185185185,
+      "recall": 0.5325670498084292,
+      "f1-score": 0.5828092243186582,
+      "support": 261.0
+    },
+    "accuracy": 0.6695652173913044,
+    "macro avg": {
+      "precision": 0.7039395896588152,
+      "recall": 0.657786991692402,
+      "f1-score": 0.6718959656004303,
+      "support": 920.0
+    },
+    "weighted avg": {
+      "precision": 0.6929480439983553,
+      "recall": 0.6695652173913044,
+      "f1-score": 0.6720838832163647,
+      "support": 920.0
+    }
+  },
+  "Decision Tree": {
+    "Low payment activity": {
+      "precision": 0.8140495867768595,
+      "recall": 0.696113074204947,
+      "f1-score": 0.7504761904761905,
+      "support": 283.0
+    },
+    "Medium payment activity": {
+      "precision": 0.5730088495575221,
+      "recall": 0.6888297872340425,
+      "f1-score": 0.6256038647342995,
+      "support": 376.0
+    },
+    "High payment activity": {
+      "precision": 0.5707964601769911,
+      "recall": 0.4942528735632184,
+      "f1-score": 0.5297741273100616,
+      "support": 261.0
+    },
+    "accuracy": 0.6358695652173914,
+    "macro avg": {
+      "precision": 0.6526182988371243,
+      "recall": 0.6263985783340693,
+      "f1-score": 0.6352847275068505,
+      "support": 920.0
+    },
+    "weighted avg": {
+      "precision": 0.6465274310844286,
+      "recall": 0.6358695652173914,
+      "f1-score": 0.6368291981225919,
+      "support": 920.0
+    }
+  },
+  "Random Forest": {
+    "Low payment activity": {
+      "precision": 0.9261083743842364,
+      "recall": 0.6643109540636042,
+      "f1-score": 0.7736625514403292,
+      "support": 283.0
+    },
+    "Medium payment activity": {
+      "precision": 0.5897435897435898,
+      "recall": 0.7952127659574468,
+      "f1-score": 0.6772366930917327,
+      "support": 376.0
+    },
+    "High payment activity": {
+      "precision": 0.6714285714285714,
+      "recall": 0.5402298850574713,
+      "f1-score": 0.5987261146496815,
+      "support": 261.0
+    },
+    "accuracy": 0.6826086956521739,
+    "macro avg": {
+      "precision": 0.7290935118521324,
+      "recall": 0.6665845350261742,
+      "f1-score": 0.6832084530605811,
+      "support": 920.0
+    },
+    "weighted avg": {
+      "precision": 0.7163859965621584,
+      "recall": 0.6826086956521739,
+      "f1-score": 0.6846250158518169,
+      "support": 920.0
+    }
+  }
+}

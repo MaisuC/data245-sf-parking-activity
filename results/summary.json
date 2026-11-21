@@ -1,0 +1,99 @@
+{
+  "selected_model_by_validation": "KNN",
+  "selected_validation_macro_f1": 0.6563327470136548,
+  "selected_test_metrics": {
+    "accuracy": 0.6695652173913044,
+    "balanced_accuracy": 0.657786991692402,
+    "macro_precision": 0.7039395896588152,
+    "macro_recall": 0.657786991692402,
+    "macro_f1": 0.6718959656004303,
+    "weighted_f1": 0.6720838832163647,
+    "mcc": 0.4957598786662426,
+    "quadratic_kappa": 0.6720019132483592,
+    "high_activity_recall": 0.5325670498084292,
+    "log_loss": 0.8759125379797426,
+    "roc_auc_ovr_macro": 0.8244891912334283
+  },
+  "best_baseline_test_macro_f1": 0.6834612580029545,
+  "model_bytes": 80097,
+  "total_runtime_seconds": 6.83514404296875,
+  "data_quality": {
+    "hourly_grid_rows": 23424,
+    "analytical_window_rows": 8480,
+    "excluded_silent_block_days": 350,
+    "excluded_window_rows_missing_target_or_history": 3810,
+    "modeling_rows": 4670,
+    "thresholds_training_only": [
+      0.10526315789473684,
+      0.3333333333333333
+    ],
+    "sampled_blockfaces": 16,
+    "blockfaces_with_any_events": 12,
+    "modeled_blockfaces": 12,
+    "sampled_meters": 233,
+    "meters_with_any_events": 146,
+    "silent_sampled_blockfaces": [
+      "471102",
+      "491161",
+      "568311",
+      "569212"
+    ],
+    "modeled_weekday_counts": {
+      "1": 910,
+      "2": 960,
+      "3": 950,
+      "4": 950,
+      "5": 900
+    },
+    "label_definition": "NS (new-session) event starts per snapshot eligible single-space meter in the target hour, split by training-only terciles. Proxy for paid activity, not occupancy.",
+    "analytical_window": "Published hours 09:00-18:59, Monday-Saturday; excludes Sunday, does not verify location-specific charging schedules.",
+    "event_counts_by_type": {
+      "AT": 5914,
+      "NS": 21665
+    },
+    "split_summary": {
+      "train": {
+        "rows": 2820,
+        "dates": 24,
+        "start": "2026-09-08T09:00:00",
+        "end": "2026-10-09T18:00:00",
+        "class_counts": {
+          "0": 950,
+          "1": 1116,
+          "2": 754
+        }
+      },
+      "validation": {
+        "rows": 930,
+        "dates": 8,
+        "start": "2026-10-10T09:00:00",
+        "end": "2026-10-21T18:00:00",
+        "class_counts": {
+          "0": 309,
+          "1": 397,
+          "2": 224
+        }
+      },
+      "test": {
+        "rows": 920,
+        "dates": 8,
+        "start": "2026-10-22T09:00:00",
+        "end": "2026-10-31T18:00:00",
+        "class_counts": {
+          "0": 283,
+          "1": 376,
+          "2": 261
+        }
+      }
+    }
+  },
+  "versions": {
+    "python": "3.13.9",
+    "sklearn": "1.7.2",
+    "pandas": "2.3.3",
+    "numpy": "2.3.5"
+  },
+  "protocol": "Training-only target terciles; chronological date split 60/20/20; three configurations per algorithm ranked on validation macro F1; refit each selected configuration on train+validation; test once. Ablation and split diagnostic are descriptive post-selection analyses.",
+  "feature_availability": "All payment-derived features use completed hours earlier than target_start. Calendar features describe the coming hour. Inventory is a fixed later snapshot.",
+  "inference_latency_assumption": "No measured API ingestion latency; immediate hourly aggregate availability is an experimental assumption, not a deployment claim."
+}

@@ -1,0 +1,27 @@
+{
+  "warning": "Separate shuffled-split diagnostic, with different test observations. Labels retain the chronological-training thresholds. No causal attribution of any score difference.",
+  "model": "KNN",
+  "random_test_rows": 934,
+  "random_split": {
+    "accuracy": 0.6541755888650964,
+    "balanced_accuracy": 0.6360966293761993,
+    "macro_precision": 0.6836390000267752,
+    "macro_recall": 0.6360966293761993,
+    "macro_f1": 0.6491516547690871,
+    "weighted_f1": 0.6554016315263786,
+    "mcc": 0.4720952815497129,
+    "quadratic_kappa": 0.6474260090466628,
+    "high_activity_recall": 0.4798387096774194
+  },
+  "chronological_test": {
+    "accuracy": 0.6695652173913044,
+    "balanced_accuracy": 0.657786991692402,
+    "macro_precision": 0.7039395896588152,
+    "macro_recall": 0.657786991692402,
+    "macro_f1": 0.6718959656004303,
+    "weighted_f1": 0.6720838832163647,
+    "mcc": 0.4957598786662426,
+    "quadratic_kappa": 0.6720019132483592,
+    "high_activity_recall": 0.5325670498084292
+  }
+}

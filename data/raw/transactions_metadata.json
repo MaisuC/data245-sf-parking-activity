@@ -1,0 +1,727 @@
+{
+  "id" : "imvp-dq3v",
+  "name" : "SFMTA Parking Meter Detailed Revenue Transactions",
+  "assetType" : "dataset",
+  "attribution" : "SFMTA",
+  "averageRating" : 0,
+  "category" : "Transportation",
+  "createdAt" : 1531773763,
+  "description" : "Parking meter transaction records where each row equals a single transaction by a single customer at a single meter. Subsequent transactions by a customer to extend time, for example, are captured as new transaction record and indicated with a METER_EVENT_TYPE of AT (Additional Time).\n\nPOST_ID is a join key that refers to the identifier for a meter. You can find that inventory including location of the meter here: https://data.sfgov.org/d/8vzz-qzz9",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "domainCName" : "data.sf.gov",
+  "downloadCount" : 3898,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "PDDL",
+  "locale" : "en_US",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 33648673,
+  "provenance" : "official",
+  "publicationAppendEnabled" : false,
+  "publicationDate" : 1583957159,
+  "publicationGroup" : 15387572,
+  "publicationStage" : "published",
+  "rowIdentifierColumnId" : 455199857,
+  "rowsUpdatedAt" : 1795158069,
+  "rowsUpdatedBy" : "jb2b-5ckh",
+  "tableId" : 16935992,
+  "totalTimesRated" : 0,
+  "viewCount" : 13553,
+  "viewLastModified" : 1748027836,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1531840635,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 1958512,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1531840635,
+    "targetAudience" : "public",
+    "workflowId" : 2546,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "failureCount" : 0,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "jb2b-5ckh",
+      "displayName" : "sfmtaData"
+    }
+  }, {
+    "message" : "The `strict_permissions` flag must be on to enable internal approvals.",
+    "state" : "unsubmittable",
+    "targetAudience" : "internal",
+    "workflowId" : 5264
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 455199857,
+    "name" : "TRANSMISSION_DATETIME",
+    "dataTypeName" : "text",
+    "description" : "A system-generated unique identifier for the transaction record",
+    "fieldName" : "transmission_datetime",
+    "position" : 1,
+    "renderTypeName" : "text",
+    "tableColumnId" : 95834625,
+    "cachedContents" : {
+      "non_null" : "176760142",
+      "largest" : "999999996_9_11182022070000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "1000000247_9_11182022070000",
+        "count" : "1"
+      }, {
+        "item" : "10000007_11_02102024160426",
+        "count" : "1"
+      }, {
+        "item" : "10000008_11_02102024160630",
+        "count" : "1"
+      }, {
+        "item" : "10000009_11_02102024160509",
+        "count" : "1"
+      }, {
+        "item" : "10000010_11_02102024160424",
+        "count" : "1"
+      }, {
+        "item" : "-100000_11_01302022115024",
+        "count" : "1"
+      }, {
+        "item" : "10000011_11_02102024160544",
+        "count" : "1"
+      }, {
+        "item" : "10000012_11_02102024160418",
+        "count" : "1"
+      }, {
+        "item" : "10000013_11_02102024160549",
+        "count" : "1"
+      }, {
+        "item" : "10000014_11_02102024160425",
+        "count" : "1"
+      }, {
+        "item" : "10000015_11_02102024160614",
+        "count" : "1"
+      }, {
+        "item" : "10000016_11_02102024160611",
+        "count" : "1"
+      }, {
+        "item" : "10000017_11_02102024160538",
+        "count" : "1"
+      }, {
+        "item" : "10000018_11_02102024160552",
+        "count" : "1"
+      }, {
+        "item" : "10000019_11_02102024160446",
+        "count" : "1"
+      }, {
+        "item" : "10000020_11_02102024160534",
+        "count" : "1"
+      }, {
+        "item" : "10000021_11_02102024160557",
+        "count" : "1"
+      }, {
+        "item" : "10000022_11_02102024160428",
+        "count" : "1"
+      }, {
+        "item" : "10000023_11_02102024160621",
+        "count" : "1"
+      }, {
+        "item" : "10000024_11_02102024160414",
+        "count" : "1"
+      } ],
+      "smallest" : "-1000000_11_01302022165517",
+      "count" : "176760142",
+      "cardinality" : "176760142"
+    },
+    "format" : { }
+  }, {
+    "id" : 455199858,
+    "name" : "POST_ID",
+    "dataTypeName" : "text",
+    "description" : "The identifier of the meter this transaction is related to. See the related meters dataset including locations here: https://data.sfgov.org/d/8vzz-qzz9",
+    "fieldName" : "post_id",
+    "position" : 2,
+    "renderTypeName" : "text",
+    "tableColumnId" : 67233501,
+    "width" : 184,
+    "cachedContents" : {
+      "non_null" : "176780439",
+      "largest" : "991-00830",
+      "null" : "0",
+      "top" : [ {
+        "item" : "911-00002",
+        "count" : "116521"
+      }, {
+        "item" : "905-00001",
+        "count" : "101271"
+      }, {
+        "item" : "918-00001",
+        "count" : "83292"
+      }, {
+        "item" : "902-00004",
+        "count" : "73968"
+      }, {
+        "item" : "908-00001",
+        "count" : "72660"
+      }, {
+        "item" : "911-00001",
+        "count" : "70697"
+      }, {
+        "item" : "923-00002",
+        "count" : "69559"
+      }, {
+        "item" : "922-00001",
+        "count" : "65960"
+      }, {
+        "item" : "906-00001",
+        "count" : "56080"
+      }, {
+        "item" : "913-00001",
+        "count" : "51978"
+      }, {
+        "item" : "373-02004",
+        "count" : "51149"
+      }, {
+        "item" : "903-00001",
+        "count" : "48059"
+      }, {
+        "item" : "909-00002",
+        "count" : "44465"
+      }, {
+        "item" : "902-00003",
+        "count" : "43397"
+      }, {
+        "item" : "909-00001",
+        "count" : "42869"
+      }, {
+        "item" : "910-00002",
+        "count" : "42378"
+      }, {
+        "item" : "360-05250",
+        "count" : "39463"
+      }, {
+        "item" : "373-02003",
+        "count" : "38582"
+      }, {
+        "item" : "360-05230",
+        "count" : "36265"
+      }, {
+        "item" : "919-00001",
+        "count" : "35901"
+      } ],
+      "smallest" : "102-02990",
+      "count" : "176780439",
+      "cardinality" : "33932"
+    },
+    "format" : { }
+  }, {
+    "id" : 455199859,
+    "name" : "STREET_BLOCK",
+    "dataTypeName" : "text",
+    "description" : "The name of the street block the meter sits on",
+    "fieldName" : "street_block",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 67233502,
+    "width" : 244,
+    "cachedContents" : {
+      "non_null" : "176780439",
+      "largest" : "YORK ST 1200",
+      "null" : "0",
+      "top" : [ {
+        "item" : "PORTOLA DR 600",
+        "count" : "975167"
+      }, {
+        "item" : "WEST PORTAL AVE 100",
+        "count" : "892330"
+      }, {
+        "item" : "WEST PORTAL AVE 300",
+        "count" : "874658"
+      }, {
+        "item" : "WEST PORTAL AVE 0",
+        "count" : "863505"
+      }, {
+        "item" : "WEST PORTAL AVE 200",
+        "count" : "819896"
+      }, {
+        "item" : "IRVING ST 2200",
+        "count" : "697046"
+      }, {
+        "item" : "NORIEGA ST 2500",
+        "count" : "627781"
+      }, {
+        "item" : "PORTOLA DR 700",
+        "count" : "622373"
+      }, {
+        "item" : "24TH ST 4000",
+        "count" : "621846"
+      }, {
+        "item" : "IRVING ST 2300",
+        "count" : "595184"
+      }, {
+        "item" : "CLEMENT ST 500",
+        "count" : "594269"
+      }, {
+        "item" : "24TH ST 3900",
+        "count" : "581341"
+      }, {
+        "item" : "CLEMENT ST 700",
+        "count" : "572273"
+      }, {
+        "item" : "NORIEGA ST 2400",
+        "count" : "562102"
+      }, {
+        "item" : "IRVING ST 2000",
+        "count" : "561377"
+      }, {
+        "item" : "IRVING ST 2100",
+        "count" : "553267"
+      }, {
+        "item" : "MISSION ST 4500",
+        "count" : "551539"
+      }, {
+        "item" : "IRVING ST 1900",
+        "count" : "544718"
+      }, {
+        "item" : "OCEAN AVE 2600",
+        "count" : "521645"
+      }, {
+        "item" : "MISSION ST 4700",
+        "count" : "501820"
+      } ],
+      "smallest" : "01ST ST 0",
+      "count" : "176780439",
+      "cardinality" : "1704"
+    },
+    "format" : { }
+  }, {
+    "id" : 455199860,
+    "name" : "PAYMENT_TYPE",
+    "dataTypeName" : "text",
+    "description" : "How the customer paid, one of the following: CASH, CREDIT CARD, SMART CARD",
+    "fieldName" : "payment_type",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 67233503,
+    "width" : 244,
+    "cachedContents" : {
+      "non_null" : "176780439",
+      "largest" : "SMART CARD",
+      "null" : "0",
+      "top" : [ {
+        "item" : "CREDIT CARD",
+        "count" : "76579626"
+      }, {
+        "item" : "CASH",
+        "count" : "66974821"
+      }, {
+        "item" : "PAY BY CELL",
+        "count" : "27473798"
+      }, {
+        "item" : "SMART CARD",
+        "count" : "5752194"
+      } ],
+      "smallest" : "CASH",
+      "count" : "176780439",
+      "cardinality" : "4"
+    },
+    "format" : { }
+  }, {
+    "id" : 455199861,
+    "name" : "SESSION_START_DT",
+    "dataTypeName" : "calendar_date",
+    "description" : " The date and time of the start of the meter session for this transaction by the customer",
+    "fieldName" : "session_start_dt",
+    "position" : 5,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 95834627,
+    "width" : 292,
+    "cachedContents" : {
+      "non_null" : "176780439",
+      "largest" : "991-00830",
+      "null" : "0",
+      "top" : [ {
+        "item" : "911-00002",
+        "count" : "116521"
+      }, {
+        "item" : "905-00001",
+        "count" : "101271"
+      }, {
+        "item" : "918-00001",
+        "count" : "83292"
+      }, {
+        "item" : "902-00004",
+        "count" : "73968"
+      }, {
+        "item" : "908-00001",
+        "count" : "72660"
+      }, {
+        "item" : "911-00001",
+        "count" : "70697"
+      }, {
+        "item" : "923-00002",
+        "count" : "69559"
+      }, {
+        "item" : "922-00001",
+        "count" : "65960"
+      }, {
+        "item" : "906-00001",
+        "count" : "56080"
+      }, {
+        "item" : "913-00001",
+        "count" : "51978"
+      }, {
+        "item" : "373-02004",
+        "count" : "51149"
+      }, {
+        "item" : "903-00001",
+        "count" : "48059"
+      }, {
+        "item" : "909-00002",
+        "count" : "44465"
+      }, {
+        "item" : "902-00003",
+        "count" : "43397"
+      }, {
+        "item" : "909-00001",
+        "count" : "42869"
+      }, {
+        "item" : "910-00002",
+        "count" : "42378"
+      }, {
+        "item" : "360-05250",
+        "count" : "39463"
+      }, {
+        "item" : "373-02003",
+        "count" : "38582"
+      }, {
+        "item" : "360-05230",
+        "count" : "36265"
+      }, {
+        "item" : "919-00001",
+        "count" : "35901"
+      } ],
+      "smallest" : "102-02990",
+      "count" : "176780439",
+      "cardinality" : "33932"
+    },
+    "format" : {
+      "view" : "date_ymd_time"
+    }
+  }, {
+    "id" : 455199862,
+    "name" : "SESSION_END_DT",
+    "dataTypeName" : "calendar_date",
+    "description" : "The date and time of the end of the meter session for this transaction by the customer",
+    "fieldName" : "session_end_dt",
+    "position" : 6,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 95834626,
+    "width" : 268,
+    "cachedContents" : {
+      "non_null" : "176780439",
+      "largest" : "991-00830",
+      "null" : "0",
+      "top" : [ {
+        "item" : "911-00002",
+        "count" : "116521"
+      }, {
+        "item" : "905-00001",
+        "count" : "101271"
+      }, {
+        "item" : "918-00001",
+        "count" : "83292"
+      }, {
+        "item" : "902-00004",
+        "count" : "73968"
+      }, {
+        "item" : "908-00001",
+        "count" : "72660"
+      }, {
+        "item" : "911-00001",
+        "count" : "70697"
+      }, {
+        "item" : "923-00002",
+        "count" : "69559"
+      }, {
+        "item" : "922-00001",
+        "count" : "65960"
+      }, {
+        "item" : "906-00001",
+        "count" : "56080"
+      }, {
+        "item" : "913-00001",
+        "count" : "51978"
+      }, {
+        "item" : "373-02004",
+        "count" : "51149"
+      }, {
+        "item" : "903-00001",
+        "count" : "48059"
+      }, {
+        "item" : "909-00002",
+        "count" : "44465"
+      }, {
+        "item" : "902-00003",
+        "count" : "43397"
+      }, {
+        "item" : "909-00001",
+        "count" : "42869"
+      }, {
+        "item" : "910-00002",
+        "count" : "42378"
+      }, {
+        "item" : "360-05250",
+        "count" : "39463"
+      }, {
+        "item" : "373-02003",
+        "count" : "38582"
+      }, {
+        "item" : "360-05230",
+        "count" : "36265"
+      }, {
+        "item" : "919-00001",
+        "count" : "35901"
+      } ],
+      "smallest" : "102-02990",
+      "count" : "176780439",
+      "cardinality" : "33932"
+    },
+    "format" : {
+      "view" : "date_ymd_time"
+    }
+  }, {
+    "id" : 455199863,
+    "name" : "METER_EVENT_TYPE",
+    "dataTypeName" : "text",
+    "description" : "Event type of the meter, one of the following: NS = New Session; AT = Addtional Time; SC = Status Change",
+    "fieldName" : "meter_event_type",
+    "position" : 7,
+    "renderTypeName" : "text",
+    "tableColumnId" : 67233506,
+    "width" : 292,
+    "cachedContents" : {
+      "non_null" : "176780439",
+      "largest" : "991-00830",
+      "null" : "0",
+      "top" : [ {
+        "item" : "911-00002",
+        "count" : "116521"
+      }, {
+        "item" : "905-00001",
+        "count" : "101271"
+      }, {
+        "item" : "918-00001",
+        "count" : "83292"
+      }, {
+        "item" : "902-00004",
+        "count" : "73968"
+      }, {
+        "item" : "908-00001",
+        "count" : "72660"
+      }, {
+        "item" : "911-00001",
+        "count" : "70697"
+      }, {
+        "item" : "923-00002",
+        "count" : "69559"
+      }, {
+        "item" : "922-00001",
+        "count" : "65960"
+      }, {
+        "item" : "906-00001",
+        "count" : "56080"
+      }, {
+        "item" : "913-00001",
+        "count" : "51978"
+      }, {
+        "item" : "373-02004",
+        "count" : "51149"
+      }, {
+        "item" : "903-00001",
+        "count" : "48059"
+      }, {
+        "item" : "909-00002",
+        "count" : "44465"
+      }, {
+        "item" : "902-00003",
+        "count" : "43397"
+      }, {
+        "item" : "909-00001",
+        "count" : "42869"
+      }, {
+        "item" : "910-00002",
+        "count" : "42378"
+      }, {
+        "item" : "360-05250",
+        "count" : "39463"
+      }, {
+        "item" : "373-02003",
+        "count" : "38582"
+      }, {
+        "item" : "360-05230",
+        "count" : "36265"
+      }, {
+        "item" : "919-00001",
+        "count" : "35901"
+      } ],
+      "smallest" : "102-02990",
+      "count" : "176780439",
+      "cardinality" : "33932"
+    },
+    "format" : { }
+  }, {
+    "id" : 455199864,
+    "name" : "GROSS_PAID_AMT",
+    "dataTypeName" : "number",
+    "description" : "The amount paid by the customer for this meter transaction",
+    "fieldName" : "gross_paid_amt",
+    "position" : 8,
+    "renderTypeName" : "number",
+    "tableColumnId" : 67233507,
+    "width" : 268,
+    "cachedContents" : {
+      "non_null" : "176780439",
+      "largest" : "991-00830",
+      "null" : "0",
+      "top" : [ {
+        "item" : "911-00002",
+        "count" : "116521"
+      }, {
+        "item" : "905-00001",
+        "count" : "101271"
+      }, {
+        "item" : "918-00001",
+        "count" : "83292"
+      }, {
+        "item" : "902-00004",
+        "count" : "73968"
+      }, {
+        "item" : "908-00001",
+        "count" : "72660"
+      }, {
+        "item" : "911-00001",
+        "count" : "70697"
+      }, {
+        "item" : "923-00002",
+        "count" : "69559"
+      }, {
+        "item" : "922-00001",
+        "count" : "65960"
+      }, {
+        "item" : "906-00001",
+        "count" : "56080"
+      }, {
+        "item" : "913-00001",
+        "count" : "51978"
+      }, {
+        "item" : "373-02004",
+        "count" : "51149"
+      }, {
+        "item" : "903-00001",
+        "count" : "48059"
+      }, {
+        "item" : "909-00002",
+        "count" : "44465"
+      }, {
+        "item" : "902-00003",
+        "count" : "43397"
+      }, {
+        "item" : "909-00001",
+        "count" : "42869"
+      }, {
+        "item" : "910-00002",
+        "count" : "42378"
+      }, {
+        "item" : "360-05250",
+        "count" : "39463"
+      }, {
+        "item" : "373-02003",
+        "count" : "38582"
+      }, {
+        "item" : "360-05230",
+        "count" : "36265"
+      }, {
+        "item" : "919-00001",
+        "count" : "35901"
+      } ],
+      "smallest" : "102-02990",
+      "count" : "176780439",
+      "cardinality" : "33932"
+    },
+    "format" : {
+      "precisionStyle" : "currency",
+      "decimalSeparator" : ".",
+      "groupSeparator" : ","
+    }
+  } ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "license" : {
+    "name" : "Open Data Commons Public Domain Dedication and License",
+    "termsLink" : "http://opendatacommons.org/licenses/pddl/1.0/"
+  },
+  "metadata" : {
+    "custom_fields" : {
+      "Department Metrics" : {
+        "Publishing Department" : "Municipal Transportation Agency "
+      },
+      "Internal Management" : {
+        "Inventory ID" : "MTA-0116"
+      },
+      "Detailed Descriptive" : {
+        "Geographic unit" : "Not applicable"
+      },
+      "Publishing Details" : {
+        "Data change frequency" : "Multiple times per hour",
+        "Program link" : "",
+        "Publishing frequency" : "Daily",
+        "Geographic unit" : ""
+      }
+    },
+    "rowIdentifier" : 455199857,
+    "rowLabel" : "Meter Transaction",
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ],
+    "renderTypeConfig" : {
+      "visible" : {
+        "table" : true
+      }
+    }
+  },
+  "owner" : {
+    "id" : "jb2b-5ckh",
+    "disabledAt" : 1711666454,
+    "displayName" : "sfmtaData",
+    "profileImageUrlLarge" : "/api/users/jb2b-5ckh/profile_images/LARGE",
+    "profileImageUrlMedium" : "/api/users/jb2b-5ckh/profile_images/THUMB",
+    "profileImageUrlSmall" : "/api/users/jb2b-5ckh/profile_images/TINY",
+    "screenName" : "sfmtaData",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "query" : { },
+  "rights" : [ "read" ],
+  "tableAuthor" : {
+    "id" : "jb2b-5ckh",
+    "disabledAt" : 1711666454,
+    "displayName" : "sfmtaData",
+    "profileImageUrlLarge" : "/api/users/jb2b-5ckh/profile_images/LARGE",
+    "profileImageUrlMedium" : "/api/users/jb2b-5ckh/profile_images/THUMB",
+    "profileImageUrlSmall" : "/api/users/jb2b-5ckh/profile_images/TINY",
+    "screenName" : "sfmtaData",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "flags" : [ "default", "federated", "internalToPublicFederatedView", "ownerMayBeContacted", "restorable", "restorePossibleForType" ]
+}

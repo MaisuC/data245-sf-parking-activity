@@ -1,0 +1,2491 @@
+{
+  "id" : "8vzz-qzz9",
+  "name" : "Parking Meters",
+  "assetType" : "dataset",
+  "attribution" : "SFMTA",
+  "attributionLink" : "https://services.sfmta.com/arcgis/rest/services/DataSF/master/FeatureServer/19",
+  "averageRating" : 0,
+  "category" : "Transportation",
+  "createdAt" : 1556499710,
+  "description" : "<strong>A. SUMMARY</strong>\nLocation, cap color and other key attributes of parking meters in San Francisco. Does not include operating schedules or rate schedules.\n\n<strong>B. METHODOLOGY  </strong>\nUpdated via the SFpark data warehouse (Parking Space Inventory) by meter shop staff, with manual updates sourced from SFMTA CAD drawings and MTAB resolutions. \n\n<strong>C. UPDATE FREQUENCY  </strong>\nUpdated weekly.\n\n<strong>D. OTHER CRITICAL INFO   </strong>\nFor active meters only, filter for \"Active_Met\" = 'M\" or \"T\". Meter operating and rate schedules are more complex and available as separate tables. Key field for joining is the Parking Space ID field.",
+  "diciBackend" : false,
+  "displayType" : "table",
+  "domainCName" : "data.sf.gov",
+  "downloadCount" : 9123,
+  "hideFromCatalog" : false,
+  "hideFromDataJson" : false,
+  "licenseId" : "PDDL",
+  "locale" : "en_US",
+  "locked" : false,
+  "newBackend" : true,
+  "numberOfComments" : 0,
+  "oid" : 40369954,
+  "provenance" : "official",
+  "publicationAppendEnabled" : true,
+  "publicationDate" : 1705530259,
+  "publicationGroup" : 16158263,
+  "publicationStage" : "published",
+  "rowsUpdatedAt" : 1794075973,
+  "rowsUpdatedBy" : "dbag-6qd9",
+  "tableId" : 19431921,
+  "totalTimesRated" : 0,
+  "viewCount" : 77623,
+  "viewLastModified" : 1794075905,
+  "viewType" : "tabular",
+  "approvals" : [ {
+    "reviewedAt" : 1556501865,
+    "reviewedAutomatically" : true,
+    "state" : "approved",
+    "submissionId" : 6086395,
+    "submissionObject" : "public_audience_request",
+    "submissionOutcome" : "change_audience",
+    "submittedAt" : 1556501865,
+    "targetAudience" : "public",
+    "workflowId" : 2546,
+    "submissionDetails" : {
+      "permissionType" : "READ"
+    },
+    "submissionOutcomeApplication" : {
+      "failureCount" : 0,
+      "status" : "success"
+    },
+    "submitter" : {
+      "id" : "dbag-6qd9",
+      "displayName" : "OpenData"
+    }
+  }, {
+    "message" : "The `strict_permissions` flag must be on to enable internal approvals.",
+    "state" : "unsubmittable",
+    "targetAudience" : "internal",
+    "workflowId" : 5264
+  } ],
+  "clientContext" : {
+    "clientContextVariables" : [ ],
+    "inheritedVariables" : { }
+  },
+  "columns" : [ {
+    "id" : 588391260,
+    "name" : "OBJECTID",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "objectid",
+    "position" : 1,
+    "renderTypeName" : "number",
+    "tableColumnId" : 80123570,
+    "width" : 196,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "20695259",
+      "null" : "0",
+      "top" : [ {
+        "item" : "20656414",
+        "count" : "1"
+      }, {
+        "item" : "20656415",
+        "count" : "1"
+      }, {
+        "item" : "20656416",
+        "count" : "1"
+      }, {
+        "item" : "20656417",
+        "count" : "1"
+      }, {
+        "item" : "20656418",
+        "count" : "1"
+      }, {
+        "item" : "20656419",
+        "count" : "1"
+      }, {
+        "item" : "20656420",
+        "count" : "1"
+      }, {
+        "item" : "20656421",
+        "count" : "1"
+      }, {
+        "item" : "20656422",
+        "count" : "1"
+      }, {
+        "item" : "20656423",
+        "count" : "1"
+      }, {
+        "item" : "20656424",
+        "count" : "1"
+      }, {
+        "item" : "20656425",
+        "count" : "1"
+      }, {
+        "item" : "20656426",
+        "count" : "1"
+      }, {
+        "item" : "20656427",
+        "count" : "1"
+      }, {
+        "item" : "20656428",
+        "count" : "1"
+      }, {
+        "item" : "20656429",
+        "count" : "1"
+      }, {
+        "item" : "20656430",
+        "count" : "1"
+      }, {
+        "item" : "20656431",
+        "count" : "1"
+      }, {
+        "item" : "20656432",
+        "count" : "1"
+      }, {
+        "item" : "20656413",
+        "count" : "1"
+      } ],
+      "smallest" : "20656413",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : {
+      "precisionStyle" : "standard",
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 588391261,
+    "name" : "PARKING_SPACE_ID",
+    "dataTypeName" : "number",
+    "description" : "Parking Space ID, connected to the physical location rather than the meter",
+    "fieldName" : "parking_space_id",
+    "position" : 2,
+    "renderTypeName" : "number",
+    "tableColumnId" : 80123571,
+    "width" : 292,
+    "cachedContents" : {
+      "non_null" : "0",
+      "null" : "38847",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 588391262,
+    "name" : "POST_ID",
+    "dataTypeName" : "text",
+    "description" : "Unique identifier of meter",
+    "fieldName" : "post_id",
+    "position" : 3,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123572,
+    "width" : 184,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "991-00830",
+      "null" : "0",
+      "top" : [ {
+        "item" : "102-02990",
+        "count" : "1"
+      }, {
+        "item" : "102-03890",
+        "count" : "1"
+      }, {
+        "item" : "102-03900",
+        "count" : "1"
+      }, {
+        "item" : "102-03910",
+        "count" : "1"
+      }, {
+        "item" : "102-03920",
+        "count" : "1"
+      }, {
+        "item" : "102-03930",
+        "count" : "1"
+      }, {
+        "item" : "102-03940",
+        "count" : "1"
+      }, {
+        "item" : "102-03950",
+        "count" : "1"
+      }, {
+        "item" : "102-03960",
+        "count" : "1"
+      }, {
+        "item" : "102-03970",
+        "count" : "1"
+      }, {
+        "item" : "102-03980",
+        "count" : "1"
+      }, {
+        "item" : "102-04010",
+        "count" : "1"
+      }, {
+        "item" : "102-04030",
+        "count" : "1"
+      }, {
+        "item" : "102-04040",
+        "count" : "1"
+      }, {
+        "item" : "102-04060",
+        "count" : "1"
+      }, {
+        "item" : "103-02870",
+        "count" : "1"
+      }, {
+        "item" : "103-02890",
+        "count" : "1"
+      }, {
+        "item" : "103-02910",
+        "count" : "1"
+      }, {
+        "item" : "103-02940",
+        "count" : "1"
+      }, {
+        "item" : "000-00000",
+        "count" : "1"
+      } ],
+      "smallest" : "000-00000",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391263,
+    "name" : "MS_PAY_STATION_ID",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "ms_pay_station_id",
+    "position" : 4,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123573,
+    "width" : 304,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "991-00001",
+      "null" : "0",
+      "top" : [ {
+        "item" : "-",
+        "count" : "30852"
+      }, {
+        "item" : "991-00001",
+        "count" : "61"
+      }, {
+        "item" : "891-00001",
+        "count" : "59"
+      }, {
+        "item" : "892-00001",
+        "count" : "40"
+      }, {
+        "item" : "916-00004",
+        "count" : "22"
+      }, {
+        "item" : "905-00001",
+        "count" : "20"
+      }, {
+        "item" : "914-00001",
+        "count" : "19"
+      }, {
+        "item" : "916-00001",
+        "count" : "18"
+      }, {
+        "item" : "916-00003",
+        "count" : "18"
+      }, {
+        "item" : "915-00001",
+        "count" : "17"
+      }, {
+        "item" : "893-00003",
+        "count" : "17"
+      }, {
+        "item" : "893-00004",
+        "count" : "17"
+      }, {
+        "item" : "893-00002",
+        "count" : "17"
+      }, {
+        "item" : "893-00001",
+        "count" : "17"
+      }, {
+        "item" : "893-00005",
+        "count" : "17"
+      }, {
+        "item" : "658-00003",
+        "count" : "16"
+      }, {
+        "item" : "210-01007",
+        "count" : "16"
+      }, {
+        "item" : "916-00002",
+        "count" : "16"
+      }, {
+        "item" : "902-00003",
+        "count" : "15"
+      }, {
+        "item" : "525-00003",
+        "count" : "14"
+      } ],
+      "smallest" : "-",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391264,
+    "name" : "MS_SPACE_NUM",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "ms_space_num",
+    "position" : 5,
+    "renderTypeName" : "number",
+    "tableColumnId" : 80123574,
+    "width" : 244,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "99",
+      "null" : "0",
+      "top" : [ {
+        "item" : "0",
+        "count" : "33565"
+      }, {
+        "item" : "5",
+        "count" : "233"
+      }, {
+        "item" : "1",
+        "count" : "232"
+      }, {
+        "item" : "3",
+        "count" : "222"
+      }, {
+        "item" : "6",
+        "count" : "212"
+      }, {
+        "item" : "4",
+        "count" : "211"
+      }, {
+        "item" : "7",
+        "count" : "207"
+      }, {
+        "item" : "2",
+        "count" : "201"
+      }, {
+        "item" : "8",
+        "count" : "174"
+      }, {
+        "item" : "9",
+        "count" : "168"
+      }, {
+        "item" : "10",
+        "count" : "117"
+      }, {
+        "item" : "15",
+        "count" : "97"
+      }, {
+        "item" : "11",
+        "count" : "96"
+      }, {
+        "item" : "17",
+        "count" : "96"
+      }, {
+        "item" : "13",
+        "count" : "95"
+      }, {
+        "item" : "19",
+        "count" : "94"
+      }, {
+        "item" : "21",
+        "count" : "93"
+      }, {
+        "item" : "14",
+        "count" : "92"
+      }, {
+        "item" : "12",
+        "count" : "91"
+      }, {
+        "item" : "22",
+        "count" : "89"
+      } ],
+      "smallest" : "0",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 588391265,
+    "name" : "SENSOR_FLAG",
+    "dataTypeName" : "text",
+    "description" : "If there was an active occupancy sensor located at the space during the SFpark pilot (until Dec 2013)--N- No,Y - Yes",
+    "fieldName" : "sensor_flag",
+    "position" : 6,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123575,
+    "width" : 232,
+    "cachedContents" : {
+      "non_null" : "0",
+      "null" : "38847",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391266,
+    "name" : "ON_OFFSTREET_TYPE",
+    "dataTypeName" : "text",
+    "description" : "Whether the space is on the street or off‐street, e.g. metered parking lot--OFF Off‐street,ON On‐street",
+    "fieldName" : "on_offstreet_type",
+    "position" : 7,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123576,
+    "width" : 304,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "ON",
+      "null" : "0",
+      "top" : [ {
+        "item" : "ON",
+        "count" : "37876"
+      }, {
+        "item" : "OFF",
+        "count" : "971"
+      } ],
+      "smallest" : "OFF",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391267,
+    "name" : "OSP_ID",
+    "dataTypeName" : "number",
+    "description" : "Unique identifier of SFMTA‐owned off‐street parking space--Null - Meter located on‐street,890 - Pier 48 Lot,891 - Pier 52 Lot,892 - Pier 1/2 Motorcycle Lot,901 - 24th and Capp Lot,902 - California and Steiner Lot,903 - 8th and Clement Lot,904 - 9th and Clement Lot,905 - Castro Theater Lot,906 - 18th and Collingwood Lot,907 - Mission and Norton Lot,908 - 21st and Geary Lot,909 - 18th and Geary Lot,910 - 20th and Irving Lot,911 - 8th and Irving Lot,913 - 7th and Irving Lot,914 - Junipero Serra and Ocean Lot,915 - 19th and Ocean Lot,916 - Pierce Street Garage,918 - 24th and Noe Lot,919 - Felton and San Bruno Lot,920 - SF General Hospital Lot,922 - West Portal Lot,923 - Claremont and Ulloa Lot,924 - Phelan Loop Lot",
+    "fieldName" : "osp_id",
+    "position" : 8,
+    "renderTypeName" : "number",
+    "tableColumnId" : 80123577,
+    "width" : 172,
+    "cachedContents" : {
+      "non_null" : "0",
+      "null" : "38847",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 588391268,
+    "name" : "JURISDICTION",
+    "dataTypeName" : "text",
+    "description" : "Agency which manages the meter--PORT - Port of San Francisco,SFMTA - San Francisco Municipal Transportation Agency",
+    "fieldName" : "jurisdiction",
+    "position" : 9,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123578,
+    "width" : 244,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "SFMTA",
+      "null" : "0",
+      "top" : [ {
+        "item" : "SFMTA",
+        "count" : "36874"
+      }, {
+        "item" : "PORT",
+        "count" : "1932"
+      }, {
+        "item" : "POFF09",
+        "count" : "6"
+      }, {
+        "item" : "OffStr",
+        "count" : "5"
+      }, {
+        "item" : "POFF04",
+        "count" : "5"
+      }, {
+        "item" : "POFF07",
+        "count" : "5"
+      }, {
+        "item" : "POFF08",
+        "count" : "5"
+      }, {
+        "item" : "POFF03",
+        "count" : "3"
+      }, {
+        "item" : "POFF10",
+        "count" : "3"
+      }, {
+        "item" : "POFF05",
+        "count" : "3"
+      }, {
+        "item" : "POFF06",
+        "count" : "3"
+      }, {
+        "item" : "POFF01",
+        "count" : "2"
+      }, {
+        "item" : "POFF02",
+        "count" : "1"
+      } ],
+      "smallest" : "OffStr",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391269,
+    "name" : "PM_DISTRICT_ID",
+    "dataTypeName" : "number",
+    "description" : "Parking Management District ID",
+    "fieldName" : "pm_district_id",
+    "position" : 10,
+    "renderTypeName" : "number",
+    "tableColumnId" : 80123579,
+    "width" : 268,
+    "cachedContents" : {
+      "non_null" : "38817",
+      "largest" : "53",
+      "null" : "30",
+      "top" : [ {
+        "item" : "1",
+        "count" : "5117"
+      }, {
+        "item" : "2",
+        "count" : "4631"
+      }, {
+        "item" : "14",
+        "count" : "3415"
+      }, {
+        "item" : "15",
+        "count" : "2735"
+      }, {
+        "item" : "3",
+        "count" : "2657"
+      }, {
+        "item" : "12",
+        "count" : "2339"
+      }, {
+        "item" : "4",
+        "count" : "1790"
+      }, {
+        "item" : "13",
+        "count" : "1693"
+      }, {
+        "item" : "29",
+        "count" : "1004"
+      }, {
+        "item" : "6",
+        "count" : "987"
+      }, {
+        "item" : "5",
+        "count" : "984"
+      }, {
+        "item" : "16",
+        "count" : "964"
+      }, {
+        "item" : "9",
+        "count" : "947"
+      }, {
+        "item" : "42",
+        "count" : "926"
+      }, {
+        "item" : "24",
+        "count" : "916"
+      }, {
+        "item" : "44",
+        "count" : "814"
+      }, {
+        "item" : "21",
+        "count" : "738"
+      }, {
+        "item" : "35",
+        "count" : "584"
+      }, {
+        "item" : "7",
+        "count" : "558"
+      }, {
+        "item" : "18",
+        "count" : "476"
+      } ],
+      "smallest" : "0",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 588391270,
+    "name" : "BLOCKFACE_ID",
+    "dataTypeName" : "number",
+    "description" : "Blockface (side of street) ID",
+    "fieldName" : "blockface_id",
+    "position" : 11,
+    "renderTypeName" : "number",
+    "tableColumnId" : 80123580,
+    "width" : 244,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "890001",
+      "null" : "0",
+      "top" : [ {
+        "item" : "869051",
+        "count" : "225"
+      }, {
+        "item" : "607322",
+        "count" : "117"
+      }, {
+        "item" : "340002",
+        "count" : "96"
+      }, {
+        "item" : "684041",
+        "count" : "85"
+      }, {
+        "item" : "386021",
+        "count" : "76"
+      }, {
+        "item" : "658002",
+        "count" : "74"
+      }, {
+        "item" : "350242",
+        "count" : "72"
+      }, {
+        "item" : "386022",
+        "count" : "67"
+      }, {
+        "item" : "568021",
+        "count" : "65"
+      }, {
+        "item" : "352041",
+        "count" : "62"
+      }, {
+        "item" : "561001",
+        "count" : "61"
+      }, {
+        "item" : "684031",
+        "count" : "58"
+      }, {
+        "item" : "561022",
+        "count" : "57"
+      }, {
+        "item" : "340001",
+        "count" : "55"
+      }, {
+        "item" : "331042",
+        "count" : "53"
+      }, {
+        "item" : "684051",
+        "count" : "53"
+      }, {
+        "item" : "491102",
+        "count" : "52"
+      }, {
+        "item" : "561002",
+        "count" : "51"
+      }, {
+        "item" : "359052",
+        "count" : "50"
+      }, {
+        "item" : "492091",
+        "count" : "49"
+      } ],
+      "smallest" : "0",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 588391271,
+    "name" : "ACTIVE_METER_FLAG",
+    "dataTypeName" : "text",
+    "description" : "Status of meter: M - Active, T - Temporarily inactive, P - pay-by-license plate paystation, L - Legislated for future meter install, U - Unmetered",
+    "fieldName" : "active_meter_flag",
+    "position" : 12,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123581,
+    "width" : 304,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "U",
+      "null" : "0",
+      "top" : [ {
+        "item" : "M",
+        "count" : "26639"
+      }, {
+        "item" : "U",
+        "count" : "5074"
+      }, {
+        "item" : "T",
+        "count" : "4567"
+      }, {
+        "item" : "P",
+        "count" : "2501"
+      }, {
+        "item" : "L",
+        "count" : "66"
+      } ],
+      "smallest" : "L",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391272,
+    "name" : "REASON_CODE",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "reason_code",
+    "position" : 13,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123582,
+    "width" : 232,
+    "cachedContents" : {
+      "non_null" : "36582",
+      "largest" : "UY",
+      "null" : "2265",
+      "top" : [ {
+        "item" : "-",
+        "count" : "25069"
+      }, {
+        "item" : "U9",
+        "count" : "1557"
+      }, {
+        "item" : "U1",
+        "count" : "1489"
+      }, {
+        "item" : "UY",
+        "count" : "1316"
+      }, {
+        "item" : "UC",
+        "count" : "1313"
+      }, {
+        "item" : "UV",
+        "count" : "1162"
+      }, {
+        "item" : "U5",
+        "count" : "790"
+      }, {
+        "item" : "UD",
+        "count" : "725"
+      }, {
+        "item" : "U8",
+        "count" : "516"
+      }, {
+        "item" : "UX",
+        "count" : "503"
+      }, {
+        "item" : "UK",
+        "count" : "447"
+      }, {
+        "item" : "UB",
+        "count" : "365"
+      }, {
+        "item" : "U6",
+        "count" : "361"
+      }, {
+        "item" : "U4",
+        "count" : "204"
+      }, {
+        "item" : "UP",
+        "count" : "141"
+      }, {
+        "item" : "U2",
+        "count" : "140"
+      }, {
+        "item" : "UE",
+        "count" : "126"
+      }, {
+        "item" : "U3",
+        "count" : "109"
+      }, {
+        "item" : "UF",
+        "count" : "93"
+      }, {
+        "item" : "UG",
+        "count" : "55"
+      } ],
+      "smallest" : "-",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391273,
+    "name" : "SMART_METER_FLAG",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "smart_meter_flag",
+    "position" : 14,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123583,
+    "width" : 292,
+    "cachedContents" : {
+      "non_null" : "0",
+      "null" : "38847",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391274,
+    "name" : "METER_TYPE",
+    "dataTypeName" : "text",
+    "description" : "How many spaces the meter manages-SS - Single‐space,MS - Multi‐space",
+    "fieldName" : "meter_type",
+    "position" : 15,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123584,
+    "width" : 220,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "SS",
+      "null" : "0",
+      "top" : [ {
+        "item" : "SS",
+        "count" : "28652"
+      }, {
+        "item" : "MS",
+        "count" : "7995"
+      }, {
+        "item" : "-",
+        "count" : "2200"
+      } ],
+      "smallest" : "-",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391275,
+    "name" : "METER_VENDOR",
+    "dataTypeName" : "text",
+    "description" : "Meter vendor",
+    "fieldName" : "meter_vendor",
+    "position" : 16,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123585,
+    "width" : 244,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "UY",
+      "null" : "0",
+      "top" : [ {
+        "item" : "MacKay",
+        "count" : "20223"
+      }, {
+        "item" : "IPS",
+        "count" : "16455"
+      }, {
+        "item" : "-",
+        "count" : "2109"
+      }, {
+        "item" : "UY",
+        "count" : "60"
+      } ],
+      "smallest" : "-",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391276,
+    "name" : "METER_MODEL",
+    "dataTypeName" : "text",
+    "description" : "Meter model",
+    "fieldName" : "meter_model",
+    "position" : 17,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123586,
+    "width" : 232,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "Tango",
+      "null" : "0",
+      "top" : [ {
+        "item" : "M5",
+        "count" : "16504"
+      }, {
+        "item" : "mkBeacon",
+        "count" : "12239"
+      }, {
+        "item" : "Tango",
+        "count" : "6115"
+      }, {
+        "item" : "-",
+        "count" : "2109"
+      }, {
+        "item" : "Elite",
+        "count" : "1732"
+      }, {
+        "item" : "EliteTango",
+        "count" : "134"
+      }, {
+        "item" : "MS1",
+        "count" : "11"
+      }, {
+        "item" : "BeaconLPMS",
+        "count" : "3"
+      } ],
+      "smallest" : "-",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391277,
+    "name" : "CAP_COLOR",
+    "dataTypeName" : "text",
+    "description" : "Cap color describes the use and restrictions of the meter--Black - Motorcycle parking,Brown - Tour bus parking,Green - Short term parking,Grey - General metered parking,Purple - Boat trailer parking,Red - Six wheeled commercial vehicle parking,Yellow - Commercial vehicle parking",
+    "fieldName" : "cap_color",
+    "position" : 18,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123587,
+    "width" : 208,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "Yellow",
+      "null" : "0",
+      "top" : [ {
+        "item" : "Grey",
+        "count" : "26199"
+      }, {
+        "item" : "Yellow",
+        "count" : "4603"
+      }, {
+        "item" : "Black",
+        "count" : "2946"
+      }, {
+        "item" : "-",
+        "count" : "2019"
+      }, {
+        "item" : "Green",
+        "count" : "1429"
+      }, {
+        "item" : "Red",
+        "count" : "1414"
+      }, {
+        "item" : "Blue",
+        "count" : "171"
+      }, {
+        "item" : "Purple",
+        "count" : "34"
+      }, {
+        "item" : "Brown",
+        "count" : "17"
+      }, {
+        "item" : "White",
+        "count" : "15"
+      } ],
+      "smallest" : "-",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391278,
+    "name" : "PCO_BEAT",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "pco_beat",
+    "position" : 19,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123588,
+    "width" : 196,
+    "cachedContents" : {
+      "non_null" : "0",
+      "null" : "38847",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391279,
+    "name" : "OLD_RATE_AREA",
+    "dataTypeName" : "text",
+    "description" : "Hourly rate zone of the meter; some variations within each zone--Area 1 - Downtown primarily $3.50,Area 2 -Surrounding downtown primarily $3.00,Area 3 -Residential neighborhood primarily $2.00,Area 5 -SFpark area variable rates ranging from $0.25 to $6.00,MC1 -Motorcycle in Area 1 primarily $0.70,MC2 -Motorcycle in Area 2 primarily $0.60,MC3 -Motorcycle in Area 3 primarily $0.40,MC5 -Motorcycle in SFpark area variable rates ranging from $0.25 to $6.00,Port 1 -Port‐owned at Fisherman’s Wharf $2.50,Port 2 -Port‐owned at Fisherman’s Wharf $2.50,Port 3 -Port‐owned at North Embarcadero $2.00,Port 4 -Port‐owned at North Embarcadero $2.00,Port 5 -Port‐owned at Downtown $3.00,Port 6 -Port‐owned at Downtown $3.00,Port 7 -Port‐owned at Downtown $3.00,Port 8 -Port‐owned at Downtown $3.00,Port 9 -Port‐owned at South Embarcadero $1.00,Port 10 -Port‐owned at South Embarcadero $1.00,Port 11 -Port‐owned at South Embarcadero $1.00,Port 12 -Port‐owned at South Embarcadero $1.00,PortMC1 -Port‐owned motorcycle rate $0.25,PortMC2 -Port‐owned motorcycle rate at Ferry Building $0.50,Tour Bus - $9.00 for two hours",
+    "fieldName" : "old_rate_area",
+    "position" : 20,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123589,
+    "width" : 256,
+    "cachedContents" : {
+      "non_null" : "0",
+      "null" : "38847",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391280,
+    "name" : "STREET_ID",
+    "dataTypeName" : "number",
+    "description" : "Street identifier",
+    "fieldName" : "street_id",
+    "position" : 21,
+    "renderTypeName" : "number",
+    "tableColumnId" : 80123590,
+    "width" : 208,
+    "cachedContents" : {
+      "non_null" : "38832",
+      "largest" : "878",
+      "null" : "15",
+      "top" : [ {
+        "item" : "568",
+        "count" : "1686"
+      }, {
+        "item" : "440",
+        "count" : "1260"
+      }, {
+        "item" : "470",
+        "count" : "731"
+      }, {
+        "item" : "700",
+        "count" : "727"
+      }, {
+        "item" : "614",
+        "count" : "566"
+      }, {
+        "item" : "418",
+        "count" : "565"
+      }, {
+        "item" : "471",
+        "count" : "561"
+      }, {
+        "item" : "350",
+        "count" : "543"
+      }, {
+        "item" : "360",
+        "count" : "493"
+      }, {
+        "item" : "684",
+        "count" : "477"
+      }, {
+        "item" : "612",
+        "count" : "474"
+      }, {
+        "item" : "869",
+        "count" : "473"
+      }, {
+        "item" : "331",
+        "count" : "460"
+      }, {
+        "item" : "720",
+        "count" : "460"
+      }, {
+        "item" : "490",
+        "count" : "427"
+      }, {
+        "item" : "701",
+        "count" : "414"
+      }, {
+        "item" : "330",
+        "count" : "408"
+      }, {
+        "item" : "666",
+        "count" : "397"
+      }, {
+        "item" : "224",
+        "count" : "395"
+      }, {
+        "item" : "650",
+        "count" : "384"
+      } ],
+      "smallest" : "0",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 588391281,
+    "name" : "STREET_NAME",
+    "dataTypeName" : "text",
+    "description" : "Street name",
+    "fieldName" : "street_name",
+    "position" : 22,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123591,
+    "width" : 232,
+    "cachedContents" : {
+      "non_null" : "38846",
+      "largest" : "ZOE ST",
+      "null" : "1",
+      "top" : [ {
+        "item" : "MISSION ST",
+        "count" : "1686"
+      }, {
+        "item" : "GEARY BLVD",
+        "count" : "1000"
+      }, {
+        "item" : "HOWARD ST",
+        "count" : "740"
+      }, {
+        "item" : "VALENCIA ST",
+        "count" : "727"
+      }, {
+        "item" : "POST ST",
+        "count" : "566"
+      }, {
+        "item" : "FOLSOM ST",
+        "count" : "565"
+      }, {
+        "item" : "HARRISON ST",
+        "count" : "561"
+      }, {
+        "item" : "CALIFORNIA ST",
+        "count" : "543"
+      }, {
+        "item" : "CLEMENT ST",
+        "count" : "493"
+      }, {
+        "item" : "BRYANT ST",
+        "count" : "488"
+      }, {
+        "item" : "BRANNAN ST",
+        "count" : "480"
+      }, {
+        "item" : "TOWNSEND ST",
+        "count" : "477"
+      }, {
+        "item" : "TERRY A FRANCOIS BLVD",
+        "count" : "473"
+      }, {
+        "item" : "WASHINGTON ST",
+        "count" : "460"
+      }, {
+        "item" : "POLK ST",
+        "count" : "431"
+      }, {
+        "item" : "IRVING ST",
+        "count" : "427"
+      }, {
+        "item" : "VAN NESS AVE",
+        "count" : "414"
+      }, {
+        "item" : "SUTTER ST",
+        "count" : "397"
+      }, {
+        "item" : "24TH ST",
+        "count" : "395"
+      }, {
+        "item" : "SACRAMENTO ST",
+        "count" : "385"
+      } ],
+      "smallest" : "01ST ST",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391282,
+    "name" : "STREET_NUM",
+    "dataTypeName" : "number",
+    "description" : "Approximate street number of meter",
+    "fieldName" : "street_num",
+    "position" : 23,
+    "renderTypeName" : "number",
+    "tableColumnId" : 80123592,
+    "width" : 220,
+    "cachedContents" : {
+      "non_null" : "38823",
+      "largest" : "6325",
+      "null" : "24",
+      "top" : [ {
+        "item" : "601",
+        "count" : "194"
+      }, {
+        "item" : "3",
+        "count" : "175"
+      }, {
+        "item" : "5",
+        "count" : "150"
+      }, {
+        "item" : "4",
+        "count" : "149"
+      }, {
+        "item" : "104",
+        "count" : "134"
+      }, {
+        "item" : "103",
+        "count" : "133"
+      }, {
+        "item" : "1",
+        "count" : "124"
+      }, {
+        "item" : "7",
+        "count" : "123"
+      }, {
+        "item" : "204",
+        "count" : "120"
+      }, {
+        "item" : "105",
+        "count" : "119"
+      }, {
+        "item" : "6",
+        "count" : "114"
+      }, {
+        "item" : "501",
+        "count" : "111"
+      }, {
+        "item" : "3252",
+        "count" : "110"
+      }, {
+        "item" : "106",
+        "count" : "109"
+      }, {
+        "item" : "403",
+        "count" : "109"
+      }, {
+        "item" : "303",
+        "count" : "108"
+      }, {
+        "item" : "304",
+        "count" : "107"
+      }, {
+        "item" : "203",
+        "count" : "107"
+      }, {
+        "item" : "405",
+        "count" : "99"
+      }, {
+        "item" : "421",
+        "count" : "98"
+      } ],
+      "smallest" : "0",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391283,
+    "name" : "PARITY_DIGIT_POSITION",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "parity_digit_position",
+    "position" : 24,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123593,
+    "width" : 352,
+    "cachedContents" : {
+      "non_null" : "0",
+      "null" : "38847",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391284,
+    "name" : "STREET_SEG_CTRLN_ID",
+    "dataTypeName" : "number",
+    "description" : "Street segment centerline identifier",
+    "fieldName" : "street_seg_ctrln_id",
+    "position" : 25,
+    "renderTypeName" : "number",
+    "tableColumnId" : 80123594,
+    "width" : 328,
+    "cachedContents" : {
+      "non_null" : "38818",
+      "largest" : "19996000",
+      "null" : "29",
+      "top" : [ {
+        "item" : "12532004",
+        "count" : "257"
+      }, {
+        "item" : "2993000",
+        "count" : "151"
+      }, {
+        "item" : "4972000",
+        "count" : "143"
+      }, {
+        "item" : "10445000",
+        "count" : "129"
+      }, {
+        "item" : "7271000",
+        "count" : "124"
+      }, {
+        "item" : "12664000",
+        "count" : "117"
+      }, {
+        "item" : "8627000",
+        "count" : "112"
+      }, {
+        "item" : "12532007",
+        "count" : "109"
+      }, {
+        "item" : "8629000",
+        "count" : "104"
+      }, {
+        "item" : "12044000",
+        "count" : "103"
+      }, {
+        "item" : "3558000",
+        "count" : "89"
+      }, {
+        "item" : "12663000",
+        "count" : "88"
+      }, {
+        "item" : "13405000",
+        "count" : "86"
+      }, {
+        "item" : "12665000",
+        "count" : "86"
+      }, {
+        "item" : "7741000",
+        "count" : "84"
+      }, {
+        "item" : "7165000",
+        "count" : "80"
+      }, {
+        "item" : "11542000",
+        "count" : "79"
+      }, {
+        "item" : "7196000",
+        "count" : "76"
+      }, {
+        "item" : "12898002",
+        "count" : "75"
+      }, {
+        "item" : "7270000",
+        "count" : "74"
+      } ],
+      "smallest" : "0",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 588391285,
+    "name" : "ORIENTATION",
+    "dataTypeName" : "number",
+    "description" : "",
+    "fieldName" : "orientation",
+    "position" : 26,
+    "renderTypeName" : "number",
+    "tableColumnId" : 80123595,
+    "width" : 232,
+    "cachedContents" : {
+      "non_null" : "0",
+      "null" : "38847",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 588391286,
+    "name" : "LONGITUDE",
+    "dataTypeName" : "number",
+    "description" : "Longitude of meter",
+    "fieldName" : "longitude",
+    "position" : 27,
+    "renderTypeName" : "number",
+    "tableColumnId" : 80123596,
+    "width" : 208,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "-122.382322",
+      "null" : "0",
+      "top" : [ {
+        "item" : "-122.4242701993",
+        "count" : "12"
+      }, {
+        "item" : "-122.4219921299",
+        "count" : "7"
+      }, {
+        "item" : "-122.46409549910001",
+        "count" : "6"
+      }, {
+        "item" : "-122.4252932647",
+        "count" : "6"
+      }, {
+        "item" : "-122.4254566499",
+        "count" : "5"
+      }, {
+        "item" : "-122.3871983458",
+        "count" : "5"
+      }, {
+        "item" : "-122.3964819998",
+        "count" : "5"
+      }, {
+        "item" : "-122.40828920130001",
+        "count" : "4"
+      }, {
+        "item" : "-122.4121177026",
+        "count" : "4"
+      }, {
+        "item" : "-122.4068487992",
+        "count" : "4"
+      }, {
+        "item" : "-122.4167150983",
+        "count" : "4"
+      }, {
+        "item" : "-122.4198583008",
+        "count" : "4"
+      }, {
+        "item" : "-122.4099294",
+        "count" : "4"
+      }, {
+        "item" : "-122.4090441149",
+        "count" : "4"
+      }, {
+        "item" : "-122.41934039979999",
+        "count" : "4"
+      }, {
+        "item" : "-122.4222029985",
+        "count" : "4"
+      }, {
+        "item" : "-122.4814340023",
+        "count" : "4"
+      }, {
+        "item" : "-122.46711159850001",
+        "count" : "4"
+      }, {
+        "item" : "-122.42536432600001",
+        "count" : "4"
+      }, {
+        "item" : "-122.4213553981",
+        "count" : "4"
+      } ],
+      "smallest" : "-122.49931409930001",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 588391287,
+    "name" : "LATITUDE",
+    "dataTypeName" : "number",
+    "description" : "Latitude of meter",
+    "fieldName" : "latitude",
+    "position" : 28,
+    "renderTypeName" : "number",
+    "tableColumnId" : 80123597,
+    "width" : 196,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "37.808617538400007",
+      "null" : "0",
+      "top" : [ {
+        "item" : "37.7837007017",
+        "count" : "12"
+      }, {
+        "item" : "37.774586580800005",
+        "count" : "7"
+      }, {
+        "item" : "37.7828884003",
+        "count" : "6"
+      }, {
+        "item" : "37.771083058",
+        "count" : "6"
+      }, {
+        "item" : "37.7889001024",
+        "count" : "5"
+      }, {
+        "item" : "37.7820597988",
+        "count" : "5"
+      }, {
+        "item" : "37.774146050300004",
+        "count" : "5"
+      }, {
+        "item" : "37.760972982199995",
+        "count" : "5"
+      }, {
+        "item" : "37.7882802998",
+        "count" : "5"
+      }, {
+        "item" : "37.7865102989",
+        "count" : "4"
+      }, {
+        "item" : "37.7505361986",
+        "count" : "4"
+      }, {
+        "item" : "37.7842099023",
+        "count" : "4"
+      }, {
+        "item" : "37.7826658999",
+        "count" : "4"
+      }, {
+        "item" : "37.7865160991",
+        "count" : "4"
+      }, {
+        "item" : "37.7800198001",
+        "count" : "4"
+      }, {
+        "item" : "37.759567",
+        "count" : "4"
+      }, {
+        "item" : "37.770893455800007",
+        "count" : "4"
+      }, {
+        "item" : "37.7757520982",
+        "count" : "4"
+      }, {
+        "item" : "37.783245899600004",
+        "count" : "4"
+      }, {
+        "item" : "37.7890049991",
+        "count" : "4"
+      } ],
+      "smallest" : "37.7113101993",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : {
+      "noCommas" : "true"
+    }
+  }, {
+    "id" : 588391288,
+    "name" : "LEGISLATION_REF",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "legislation_ref",
+    "position" : 29,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123598,
+    "width" : 280,
+    "cachedContents" : {
+      "non_null" : "0",
+      "null" : "38847",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391289,
+    "name" : "LEGISLATION_DT",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "legislation_dt",
+    "position" : 30,
+    "renderTypeName" : "text",
+    "tableColumnId" : 116570377,
+    "width" : 268,
+    "cachedContents" : {
+      "non_null" : "0",
+      "null" : "38847",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391290,
+    "name" : "WORK_ORDER",
+    "dataTypeName" : "text",
+    "description" : "Work order number",
+    "fieldName" : "work_order",
+    "position" : 31,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123600,
+    "width" : 220,
+    "cachedContents" : {
+      "non_null" : "0",
+      "null" : "38847",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391291,
+    "name" : "COMMENTS",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "comments",
+    "position" : 32,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123601,
+    "width" : 196,
+    "cachedContents" : {
+      "non_null" : "0",
+      "null" : "38847",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391296,
+    "name" : "COLLECTION_ROUTE",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "collection_route",
+    "position" : 37,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123606,
+    "width" : 292,
+    "cachedContents" : {
+      "non_null" : "33532",
+      "largest" : "Serco Test",
+      "null" : "5315",
+      "top" : [ {
+        "item" : "DPT MOS",
+        "count" : "6293"
+      }, {
+        "item" : "201",
+        "count" : "594"
+      }, {
+        "item" : "M-434",
+        "count" : "566"
+      }, {
+        "item" : "418",
+        "count" : "564"
+      }, {
+        "item" : "126",
+        "count" : "562"
+      }, {
+        "item" : "M-435",
+        "count" : "544"
+      }, {
+        "item" : "103",
+        "count" : "530"
+      }, {
+        "item" : "125",
+        "count" : "507"
+      }, {
+        "item" : "316",
+        "count" : "484"
+      }, {
+        "item" : "113",
+        "count" : "426"
+      }, {
+        "item" : "118",
+        "count" : "425"
+      }, {
+        "item" : "M-405",
+        "count" : "424"
+      }, {
+        "item" : "209",
+        "count" : "369"
+      }, {
+        "item" : "102",
+        "count" : "365"
+      }, {
+        "item" : "305",
+        "count" : "355"
+      }, {
+        "item" : "301",
+        "count" : "351"
+      }, {
+        "item" : "215",
+        "count" : "349"
+      }, {
+        "item" : "203",
+        "count" : "348"
+      }, {
+        "item" : "432",
+        "count" : "348"
+      }, {
+        "item" : "212",
+        "count" : "335"
+      } ],
+      "smallest" : "100",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391297,
+    "name" : "COLLECTION_SUBROUTE",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "collection_subroute",
+    "position" : 38,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123607,
+    "width" : 328,
+    "cachedContents" : {
+      "non_null" : "33532",
+      "largest" : "Serco test",
+      "null" : "5315",
+      "top" : [ {
+        "item" : "DPT MOS",
+        "count" : "6293"
+      }, {
+        "item" : "M434-1",
+        "count" : "566"
+      }, {
+        "item" : "M435-2",
+        "count" : "279"
+      }, {
+        "item" : "M435-1",
+        "count" : "265"
+      }, {
+        "item" : "125-2",
+        "count" : "254"
+      }, {
+        "item" : "125-1",
+        "count" : "253"
+      }, {
+        "item" : "418-1",
+        "count" : "248"
+      }, {
+        "item" : "118-2",
+        "count" : "216"
+      }, {
+        "item" : "316-2",
+        "count" : "214"
+      }, {
+        "item" : "201-53",
+        "count" : "209"
+      }, {
+        "item" : "118-1",
+        "count" : "209"
+      }, {
+        "item" : "418-2",
+        "count" : "205"
+      }, {
+        "item" : "126-2",
+        "count" : "195"
+      }, {
+        "item" : "126-3",
+        "count" : "191"
+      }, {
+        "item" : "120-1",
+        "count" : "184"
+      }, {
+        "item" : "316-3",
+        "count" : "182"
+      }, {
+        "item" : "201-52",
+        "count" : "178"
+      }, {
+        "item" : "301-1",
+        "count" : "177"
+      }, {
+        "item" : "432-51",
+        "count" : "175"
+      }, {
+        "item" : "103-2",
+        "count" : "173"
+      } ],
+      "smallest" : "100",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391298,
+    "name" : "PMR_ROUTE",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "pmr_route",
+    "position" : 39,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123608,
+    "width" : 208,
+    "cachedContents" : {
+      "non_null" : "38846",
+      "largest" : "W-1",
+      "null" : "1",
+      "top" : [ {
+        "item" : "M-1",
+        "count" : "1448"
+      }, {
+        "item" : "M-2",
+        "count" : "1400"
+      }, {
+        "item" : "S-1",
+        "count" : "1298"
+      }, {
+        "item" : "N-4",
+        "count" : "1289"
+      }, {
+        "item" : "N-2",
+        "count" : "1082"
+      }, {
+        "item" : "M-3",
+        "count" : "1031"
+      }, {
+        "item" : "G-2",
+        "count" : "952"
+      }, {
+        "item" : "N-1",
+        "count" : "914"
+      }, {
+        "item" : "F-2",
+        "count" : "890"
+      }, {
+        "item" : "R-2",
+        "count" : "882"
+      }, {
+        "item" : "J-5",
+        "count" : "874"
+      }, {
+        "item" : "F-1",
+        "count" : "866"
+      }, {
+        "item" : "N-3",
+        "count" : "853"
+      }, {
+        "item" : "R-3",
+        "count" : "848"
+      }, {
+        "item" : "D-2",
+        "count" : "800"
+      }, {
+        "item" : "J-3",
+        "count" : "781"
+      }, {
+        "item" : "R-4",
+        "count" : "776"
+      }, {
+        "item" : "J-4",
+        "count" : "774"
+      }, {
+        "item" : "W-1",
+        "count" : "716"
+      }, {
+        "item" : "Port 2",
+        "count" : "704"
+      } ],
+      "smallest" : "A-1",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391299,
+    "name" : "NFC_KEY",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "nfc_key",
+    "position" : 40,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123609,
+    "width" : 184,
+    "cachedContents" : {
+      "non_null" : "0",
+      "null" : "38847",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391300,
+    "name" : "SPT_CODE",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "spt_code",
+    "position" : 41,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123610,
+    "width" : 196,
+    "cachedContents" : {
+      "non_null" : "0",
+      "null" : "38847",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391301,
+    "name" : "COLLECTION_ROUTE_DESC",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "collection_route_desc",
+    "position" : 42,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123611,
+    "width" : 352,
+    "cachedContents" : {
+      "non_null" : "26890",
+      "largest" : "Willow St: Unit - 200",
+      "null" : "11957",
+      "top" : [ {
+        "item" : "Fishermans Wharf",
+        "count" : "668"
+      }, {
+        "item" : "Dogpatch",
+        "count" : "566"
+      }, {
+        "item" : "Geary St: 2400 - 4800",
+        "count" : "562"
+      }, {
+        "item" : "Brannan St: 700 - 900 9th St",
+        "count" : "551"
+      }, {
+        "item" : "Hayes Valley",
+        "count" : "544"
+      }, {
+        "item" : "Divisadero St: Sacramento St",
+        "count" : "530"
+      }, {
+        "item" : "Clement St: Unit - 1100",
+        "count" : "499"
+      }, {
+        "item" : "Mission St: 4300 - 5300",
+        "count" : "484"
+      }, {
+        "item" : "Post - Geary - O Farrell",
+        "count" : "426"
+      }, {
+        "item" : "Folsom St: Main St: Spear St:",
+        "count" : "424"
+      }, {
+        "item" : "Geary St: 5000 - 5200",
+        "count" : "422"
+      }, {
+        "item" : "Fillmore Flats: 1000 - 1500",
+        "count" : "365"
+      }, {
+        "item" : "Bush St: 100 - 900 Sutter St",
+        "count" : "364"
+      }, {
+        "item" : "Union St:1500-2200 Fillmore St",
+        "count" : "348"
+      }, {
+        "item" : "Broadway St: Unit - 800",
+        "count" : "348"
+      }, {
+        "item" : "4th St: 1200-1700 China Basin",
+        "count" : "348"
+      }, {
+        "item" : "Valencia 24th St 400 - 1200",
+        "count" : "347"
+      }, {
+        "item" : "Market St: 1600-2300 Castro St",
+        "count" : "346"
+      }, {
+        "item" : "Jones St: Unit - 800",
+        "count" : "333"
+      }, {
+        "item" : "Haight St: Stanyan St: Masonic",
+        "count" : "324"
+      } ],
+      "smallest" : "13th St: 100",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391302,
+    "name" : "COLLECTION_SUBROUTE_DESC",
+    "dataTypeName" : "text",
+    "description" : "",
+    "fieldName" : "collection_subroute_desc",
+    "position" : 43,
+    "renderTypeName" : "text",
+    "tableColumnId" : 80123612,
+    "width" : 388,
+    "cachedContents" : {
+      "non_null" : "26893",
+      "largest" : "Willow St: 100",
+      "null" : "11954",
+      "top" : [ {
+        "item" : "Dogpatch",
+        "count" : "566"
+      }, {
+        "item" : "Hayes Valley",
+        "count" : "544"
+      }, {
+        "item" : "Fishermans Wharf",
+        "count" : "535"
+      }, {
+        "item" : "Clement",
+        "count" : "499"
+      }, {
+        "item" : "9th-11th St: Brannan-Bryant-Harr",
+        "count" : "440"
+      }, {
+        "item" : "Geary",
+        "count" : "422"
+      }, {
+        "item" : "Mission: 4800-5100",
+        "count" : "396"
+      }, {
+        "item" : "Geary: 2600-3100",
+        "count" : "386"
+      }, {
+        "item" : "Valencia: McCoppin-24th St",
+        "count" : "341"
+      }, {
+        "item" : "Divisadero-Sacramento",
+        "count" : "338"
+      }, {
+        "item" : "Outer Irving",
+        "count" : "301"
+      }, {
+        "item" : "Mission Bay",
+        "count" : "299"
+      }, {
+        "item" : "Taraval",
+        "count" : "297"
+      }, {
+        "item" : "Haight: Stanyan-Masonic",
+        "count" : "286"
+      }, {
+        "item" : "24th St Lower",
+        "count" : "274"
+      }, {
+        "item" : "Filbert-Fillmore-Greenwich-Pix",
+        "count" : "270"
+      }, {
+        "item" : "Showplace Square",
+        "count" : "264"
+      }, {
+        "item" : "Fillmore Flats",
+        "count" : "259"
+      }, {
+        "item" : "19th St-Castro-Market",
+        "count" : "247"
+      }, {
+        "item" : "Ellis: Unit-300",
+        "count" : "244"
+      } ],
+      "smallest" : "04th St",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391307,
+    "name" : "shape",
+    "dataTypeName" : "point",
+    "description" : "",
+    "fieldName" : "shape",
+    "position" : 48,
+    "renderTypeName" : "point",
+    "tableColumnId" : 119618654,
+    "cachedContents" : {
+      "non_null" : "38832",
+      "null" : "15",
+      "top" : [ {
+        "item" : {
+          "coordinates" : [ -122.424270199, 37.783700702 ],
+          "type" : "Point"
+        },
+        "count" : "12"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.42199213, 37.774586581 ],
+          "type" : "Point"
+        },
+        "count" : "7"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.425293265, 37.771083058 ],
+          "type" : "Point"
+        },
+        "count" : "6"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.464095499, 37.7828884 ],
+          "type" : "Point"
+        },
+        "count" : "6"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.42545665, 37.77414605 ],
+          "type" : "Point"
+        },
+        "count" : "5"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.396482, 37.7882803 ],
+          "type" : "Point"
+        },
+        "count" : "4"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.399965661, 37.801174836 ],
+          "type" : "Point"
+        },
+        "count" : "4"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.4099294, 37.784209902 ],
+          "type" : "Point"
+        },
+        "count" : "4"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.419227702, 37.750536199 ],
+          "type" : "Point"
+        },
+        "count" : "4"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.481434002, 37.7800198 ],
+          "type" : "Point"
+        },
+        "count" : "4"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.409044115, 37.800064802 ],
+          "type" : "Point"
+        },
+        "count" : "4"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.467111599, 37.782059799 ],
+          "type" : "Point"
+        },
+        "count" : "4"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.387198346, 37.760972982 ],
+          "type" : "Point"
+        },
+        "count" : "4"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.425364326, 37.770893456 ],
+          "type" : "Point"
+        },
+        "count" : "4"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.398485081, 37.799479355 ],
+          "type" : "Point"
+        },
+        "count" : "4"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.45338635, 37.768877989 ],
+          "type" : "Point"
+        },
+        "count" : "3"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.409577299, 37.799771699 ],
+          "type" : "Point"
+        },
+        "count" : "3"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.419668199, 37.778016698 ],
+          "type" : "Point"
+        },
+        "count" : "3"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.421614298, 37.760943902 ],
+          "type" : "Point"
+        },
+        "count" : "3"
+      }, {
+        "item" : {
+          "coordinates" : [ -122.416270801, 37.780658898 ],
+          "type" : "Point"
+        },
+        "count" : "3"
+      } ],
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391315,
+    "name" : "data_as_of",
+    "dataTypeName" : "calendar_date",
+    "description" : "Timestamp when the data was last processed",
+    "fieldName" : "data_as_of",
+    "position" : 49,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 150956813,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "2026-11-07T02:12:13.000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2026-11-07T02:12:13.000",
+        "count" : "38847"
+      } ],
+      "smallest" : "2026-11-07T02:12:13.000",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391313,
+    "name" : "data_loaded_at",
+    "dataTypeName" : "calendar_date",
+    "description" : "Timestamp when the data was loaded into the Open Data Portal",
+    "fieldName" : "data_loaded_at",
+    "position" : 50,
+    "renderTypeName" : "calendar_date",
+    "tableColumnId" : 150956811,
+    "cachedContents" : {
+      "non_null" : "38847",
+      "largest" : "2026-11-07T10:24:55.000",
+      "null" : "0",
+      "top" : [ {
+        "item" : "2026-11-07T10:24:55.000",
+        "count" : "38847"
+      } ],
+      "smallest" : "2026-11-07T10:24:55.000",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391314,
+    "name" : "analysis_neighborhood",
+    "dataTypeName" : "text",
+    "description" : "Neighborhood associated with the midpoint of the geographic feature",
+    "fieldName" : "analysis_neighborhood",
+    "position" : 51,
+    "renderTypeName" : "text",
+    "tableColumnId" : 150956812,
+    "cachedContents" : {
+      "non_null" : "38832",
+      "largest" : "West of Twin Peaks",
+      "null" : "15",
+      "top" : [ {
+        "item" : "Financial District/South Beach",
+        "count" : "6913"
+      }, {
+        "item" : "South of Market",
+        "count" : "3943"
+      }, {
+        "item" : "Mission",
+        "count" : "3743"
+      }, {
+        "item" : "Tenderloin",
+        "count" : "3042"
+      }, {
+        "item" : "Mission Bay",
+        "count" : "2296"
+      }, {
+        "item" : "Chinatown",
+        "count" : "1757"
+      }, {
+        "item" : "Hayes Valley",
+        "count" : "1653"
+      }, {
+        "item" : "North Beach",
+        "count" : "1364"
+      }, {
+        "item" : "Western Addition",
+        "count" : "1360"
+      }, {
+        "item" : "Nob Hill",
+        "count" : "1221"
+      }, {
+        "item" : "Inner Richmond",
+        "count" : "999"
+      }, {
+        "item" : "Potrero Hill",
+        "count" : "965"
+      }, {
+        "item" : "Outer Richmond",
+        "count" : "901"
+      }, {
+        "item" : "Marina",
+        "count" : "894"
+      }, {
+        "item" : "Sunset/Parkside",
+        "count" : "843"
+      }, {
+        "item" : "West of Twin Peaks",
+        "count" : "815"
+      }, {
+        "item" : "Russian Hill",
+        "count" : "780"
+      }, {
+        "item" : "Pacific Heights",
+        "count" : "608"
+      }, {
+        "item" : "Japantown",
+        "count" : "552"
+      }, {
+        "item" : "Castro/Upper Market",
+        "count" : "552"
+      } ],
+      "smallest" : "Bayview Hunters Point",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391316,
+    "name" : "supervisor_district",
+    "dataTypeName" : "text",
+    "description" : "Current supervisor district associated with the midopint of the geographic feature",
+    "fieldName" : "supervisor_district",
+    "position" : 52,
+    "renderTypeName" : "text",
+    "tableColumnId" : 150956814,
+    "cachedContents" : {
+      "non_null" : "38832",
+      "largest" : "9",
+      "null" : "15",
+      "top" : [ {
+        "item" : "6",
+        "count" : "11267"
+      }, {
+        "item" : "3",
+        "count" : "8639"
+      }, {
+        "item" : "5",
+        "count" : "4937"
+      }, {
+        "item" : "9",
+        "count" : "3371"
+      }, {
+        "item" : "2",
+        "count" : "3177"
+      }, {
+        "item" : "1",
+        "count" : "1900"
+      }, {
+        "item" : "7",
+        "count" : "1468"
+      }, {
+        "item" : "10",
+        "count" : "1369"
+      }, {
+        "item" : "8",
+        "count" : "1211"
+      }, {
+        "item" : "4",
+        "count" : "843"
+      }, {
+        "item" : "11",
+        "count" : "650"
+      } ],
+      "smallest" : "1",
+      "count" : "38847",
+      "cardinality" : "38847"
+    },
+    "format" : { }
+  }, {
+    "id" : 588391312,
+    "name" : "Analysis Neighborhoods",
+    "dataTypeName" : "number",
+    "description" : "This column was automatically created in order to record in what polygon from the dataset 'Analysis Neighborhoods' (ajp5-b2md) the point in column 'shape' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+    "fieldName" : ":@computed_region_ajp5_b2md",
+    "position" : 53,
+    "renderTypeName" : "number",
+    "tableColumnId" : 119618659,
+    "computationStrategy" : {
+      "source_columns" : [ "shape" ],
+      "type" : "georegion_match_on_point",
+      "parameters" : {
+        "region" : "_ajp5-b2md",
+        "primary_key" : "_feature_id"
+      }
+    },
+    "format" : { }
+  }, {
+    "id" : 588391308,
+    "name" : "Neighborhoods",
+    "dataTypeName" : "number",
+    "description" : "This column was automatically created in order to record in what polygon from the dataset 'Neighborhoods' (jwn9-ihcz) the point in column 'shape' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+    "fieldName" : ":@computed_region_jwn9_ihcz",
+    "position" : 54,
+    "renderTypeName" : "number",
+    "tableColumnId" : 119618655,
+    "computationStrategy" : {
+      "source_columns" : [ "shape" ],
+      "type" : "georegion_match_on_point",
+      "parameters" : {
+        "region" : "_jwn9-ihcz",
+        "primary_key" : "_feature_id"
+      }
+    },
+    "format" : { }
+  }, {
+    "id" : 588391309,
+    "name" : "SF Find Neighborhoods",
+    "dataTypeName" : "number",
+    "description" : "This column was automatically created in order to record in what polygon from the dataset 'SF Find Neighborhoods' (6qbp-sg9q) the point in column 'shape' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+    "fieldName" : ":@computed_region_6qbp_sg9q",
+    "position" : 55,
+    "renderTypeName" : "number",
+    "tableColumnId" : 119618656,
+    "computationStrategy" : {
+      "source_columns" : [ "shape" ],
+      "type" : "georegion_match_on_point",
+      "parameters" : {
+        "region" : "_6qbp-sg9q",
+        "primary_key" : "_feature_id"
+      }
+    },
+    "format" : { }
+  }, {
+    "id" : 588391310,
+    "name" : "Current Police Districts",
+    "dataTypeName" : "number",
+    "description" : "This column was automatically created in order to record in what polygon from the dataset 'Current Police Districts' (qgnn-b9vv) the point in column 'shape' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+    "fieldName" : ":@computed_region_qgnn_b9vv",
+    "position" : 56,
+    "renderTypeName" : "number",
+    "tableColumnId" : 119618657,
+    "computationStrategy" : {
+      "source_columns" : [ "shape" ],
+      "type" : "georegion_match_on_point",
+      "parameters" : {
+        "region" : "_qgnn-b9vv",
+        "primary_key" : "_feature_id"
+      }
+    },
+    "format" : { }
+  }, {
+    "id" : 588391311,
+    "name" : "Current Supervisor Districts",
+    "dataTypeName" : "number",
+    "description" : "This column was automatically created in order to record in what polygon from the dataset 'Current Supervisor Districts' (26cr-cadq) the point in column 'shape' is located.  This enables the creation of region maps (choropleths) in the visualization canvas and data lens.",
+    "fieldName" : ":@computed_region_26cr_cadq",
+    "position" : 57,
+    "renderTypeName" : "number",
+    "tableColumnId" : 119618658,
+    "computationStrategy" : {
+      "source_columns" : [ "shape" ],
+      "type" : "georegion_match_on_point",
+      "parameters" : {
+        "region" : "_26cr-cadq",
+        "primary_key" : "_feature_id"
+      }
+    },
+    "format" : { }
+  } ],
+  "grants" : [ {
+    "inherited" : false,
+    "type" : "viewer",
+    "flags" : [ "public" ]
+  } ],
+  "license" : {
+    "name" : "Open Data Commons Public Domain Dedication and License",
+    "termsLink" : "http://opendatacommons.org/licenses/pddl/1.0/"
+  },
+  "metadata" : {
+    "custom_fields" : {
+      "Department Metrics" : {
+        "Publishing Department" : "Municipal Transportation Agency "
+      },
+      "Internal Management" : {
+        "Inventory ID" : "MTA-0033"
+      },
+      "Publishing Details" : {
+        "Data change frequency" : "As needed",
+        "Program link" : "",
+        "Publishing frequency" : "Weekly",
+        "Is self-service" : "Yes",
+        "Geographic unit" : "Latitude/longitude"
+      }
+    },
+    "rowLabel" : "Parking Meter",
+    "availableDisplayTypes" : [ "table", "fatrow", "page" ]
+  },
+  "owner" : {
+    "id" : "dbag-6qd9",
+    "displayName" : "OpenData",
+    "screenName" : "OpenData",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "query" : { },
+  "rights" : [ "read" ],
+  "tableAuthor" : {
+    "id" : "dbag-6qd9",
+    "displayName" : "OpenData",
+    "screenName" : "OpenData",
+    "type" : "interactive",
+    "flags" : [ "acceptedEula" ]
+  },
+  "tags" : [ "meters", "psi", "parking space inventory" ],
+  "flags" : [ "default", "federated", "internalToPublicFederatedView", "ownerMayBeContacted", "restorable", "restorePossibleForType" ]
+}
