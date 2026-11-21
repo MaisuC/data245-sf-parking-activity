@@ -23,4 +23,11 @@ The repository began on November 20, 2026. Its actual commit history supplies ve
 
 ## AI disclosure
 
-OpenAI Codex assisted with implementation, public API queries, running experiments, documentation, notebook generation, and repository setup. The supplied proposal and intermediate report remain separate original documents. The team must decide the final claims, validate code and sources, and confirm individual contributions before submission. This is a project transparency statement, not a claim that the team has already completed review.
+[To be completed individually by each team member before final submission.]
+
+| Team member | AI tools used | How the tools were used | Human review and verification |
+| --- | --- | --- | --- |
+| Jietian Chen | [To be completed] | [To be completed] | [To be completed] |
+| Eric Zhao | [To be completed] | [To be completed] | [To be completed] |
+| Alaa Ahmed | [To be completed] | [To be completed] | [To be completed] |
+| Tramy Nguyen | [To be completed] | [To be completed] | [To be completed] |

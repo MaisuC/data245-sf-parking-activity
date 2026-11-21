@@ -124,7 +124,7 @@ For the original proposal and the eventual report, describe the scope refinement
 
 Team: Jietian Chen, Eric Zhao, Alaa Ahmed, Tramy Nguyen. Individual CRediT roles must reflect work each person actually completes and confirms. See `docs/TEAM_REVIEW.md` for a proposed review division; it is not a record of completed contributions.
 
-OpenAI Codex assisted with implementation, data queries, experiment execution, documentation, and notebook generation. Team members must review and understand the artifacts before submission. No historical scrum meetings or pair-programming sessions are claimed. No leaderboard position is applicable because these are direct city datasets, not competition submissions.'''),
+AI usage disclosure: [To be completed by each team member before final submission. See `docs/TEAM_REVIEW.md`.] Team members must review and understand the artifacts before submission. No historical scrum meetings or pair-programming sessions are claimed. No leaderboard position is applicable because these are direct city datasets, not competition submissions.'''),
 ]
 path = ROOT / 'notebooks/parking_activity.ipynb'
 nbf.write(notebook, path)

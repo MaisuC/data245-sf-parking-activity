@@ -127,6 +127,8 @@ For KNN, calendar/location features achieve test macro F1 0.6344. Adding histori
 
 ## Transparency
 
-OpenAI Codex assisted with code, API queries, experiment execution, analysis scaffolding, notebook/documentation generation and repository setup. Individual human contributions require confirmation. No earlier scrum process, pair programming, competition rank, publication result, deployment, or completed team review is claimed. See `docs/TEAM_REVIEW.md`.
+AI usage disclosure: [To be completed by each team member before final submission. See `docs/TEAM_REVIEW.md`.]
+
+Individual human contributions require confirmation. No earlier scrum process, pair programming, competition rank, publication result, deployment, or completed team review is claimed. See `docs/TEAM_REVIEW.md`.
 
 The repository was created on November 20, 2026. Its commit history records work from that point forward. Presentation slides and the final IEEE-format report are separate pending deliverables.
