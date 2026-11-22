@@ -109,6 +109,10 @@ For KNN, calendar/location features achieve test macro F1 0.6344. Adding histori
 - Permutation importance is descriptive and correlated predictors can share importance. No causal feature-effect interpretation is claimed.
 - No measured emissions, congestion, or cruising reduction is claimed. Potential relevance to SDG 11/13 requires validation beyond this experiment.
 
+## Downtown extension (in progress)
+
+An extension asks a driver-level question for Downtown San Francisco: the probability that a block has at least one meter with no active payment when you arrive in 5, 10 or 15 minutes. It combines this pipeline with the supply layer, calibration and driver replay from [AlaaTarekA/sf-parking-availability](https://github.com/AlaaTarekA/sf-parking-availability). Code and tests are ready; it has not yet been run on real Downtown payments. See [`docs/DOWNTOWN_INTEGRATION.md`](docs/DOWNTOWN_INTEGRATION.md).
+
 ## Repository contents
 
 | Path | Purpose |
@@ -124,6 +128,8 @@ For KNN, calendar/location features achieve test macro F1 0.6344. Adding histori
 | `results/` | Machine-readable metrics, predictions, provenance and figures |
 | `tests/` | Checks for chronology, historical inputs, thresholds and saved-model consistency |
 | `docs/TEAM_REVIEW.md` | Proposed review division and truthful contribution disclosure |
+| `src/downtown_supply.py`, `src/download_downtown.py`, `src/downtown_pipeline.py`, `src/train_downtown.py` | Downtown arrival-time extension (see `docs/DOWNTOWN_INTEGRATION.md`) |
+| `tests/test_downtown.py` | Checks for the Downtown extension on synthetic sessions |
 
 ## Transparency
 
