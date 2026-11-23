@@ -1,0 +1,30 @@
+{
+  "area_name": "Inner Richmond",
+  "area": {
+    "active_on_street_meters": 911,
+    "blocks": 126,
+    "meters_by_use": {
+      "general": 736,
+      "short-term": 84,
+      "commercial loading": 71,
+      "motorcycle": 13,
+      "truck loading": 7
+    },
+    "driver_usable_share": 0.9,
+    "meters_by_vendor": {
+      "MacKay": 889,
+      "IPS": 22
+    }
+  },
+  "modeled_meters": 800,
+  "modeled_blocks": 121,
+  "caps": {
+    "Grey": 717,
+    "Green": 83
+  },
+  "median_blocks_within_200m": 22.0,
+  "median_blocks_within_400m": 66.0,
+  "median_spaces_within_200m": 151.0,
+  "median_spaces_within_400m": 445.0,
+  "selection": "Inner Richmond; active M/T, ON, SS, SFMTA; Grey or Green cap; vendor in ['MacKay']."
+}

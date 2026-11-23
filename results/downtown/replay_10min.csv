@@ -1,0 +1,6 @@
+strategy,first_try_success,avg_walk_m
+Destination block,0.212,0.0
+Model recommendation (fail cost 3 min),0.993,22.2
+Nearest block with an unpaid space now,0.993,22.4
+Model recommendation (fail cost 6 min),0.995,24.0
+Model recommendation (fail cost 10 min),0.996,24.5

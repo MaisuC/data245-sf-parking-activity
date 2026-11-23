@@ -1,0 +1,14 @@
+{
+  "start_inclusive": "2026-09-01",
+  "end_exclusive": "2026-11-01",
+  "meters": 800,
+  "blocks": 121,
+  "sessions": 147328,
+  "event_types": {
+    "NS": 116116,
+    "AT": 31212
+  },
+  "retrieved_at_utc": "2026-11-23T19:38:48.045353+00:00",
+  "time_basis": "Published wall-clock session times; no timezone conversion.",
+  "source": "https://data.sfgov.org/d/imvp-dq3v"
+}
