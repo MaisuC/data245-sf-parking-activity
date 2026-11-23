@@ -25,9 +25,11 @@ STATIC = ['supply', 'latitude', 'longitude']
 HISTORY = ['seasonal_rate', 'occ_lag1d', 'occ_lag7d']
 LIVE = ['occ_now', 'unpaid_now', 'any_unpaid_now', 'occ_lag5', 'occ_lag15', 'starts_last15']
 PAID_TIME = ['expiring_15', 'expiring_share_15']
+NEXT_HOUR = ['p1_low', 'p1_high']    # Part 1's next-hour forecast (see src/hourly_forecast.py)
 FEATURE_SETS = {'A': CALENDAR + STATIC + HISTORY,
                 'B': CALENDAR + STATIC + HISTORY + LIVE,
-                'C': CALENDAR + STATIC + HISTORY + LIVE + PAID_TIME}
+                'C': CALENDAR + STATIC + HISTORY + LIVE + PAID_TIME,
+                'D': CALENDAR + STATIC + HISTORY + LIVE + PAID_TIME + NEXT_HOUR}
 
 
 def load_sessions(sessions, meters):

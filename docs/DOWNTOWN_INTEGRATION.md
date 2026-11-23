@@ -34,19 +34,21 @@ Then commit `data/raw/downtown_meters.csv`, `data/raw/downtown_manifest.json`, `
 | Features A | Calendar (hour, weekday, Saturday), block size and location, seasonal rate (block × weekday × hour, training days only), paid occupancy 1 day and 7 days earlier | This repo |
 | Features B | A + live paid state: occupancy now, unpaid meters now, occupancy 5 and 15 min ago, new sessions in the last 15 min | Intermediate report |
 | Features C (RQ2) | B + paid sessions ending within the next 15 minutes (count and share) | Intermediate report |
+| Features D (Part 1 → Part 2) | C + Part 1's next-hour forecast for the block (chance of Low and High activity this hour), from Part 1's features and model type (KNN) fitted on the same training dates; out-of-fold for training rows | Both: Part 1's model feeds Part 2 |
 | Split | First 60% of dates train, next 20% calibrate, last 20% test | This repo |
 | Models | Logistic Regression, Random Forest, Gradient Boosting; isotonic calibration on the calibration dates | Both |
 | Baselines | Persistence ("unpaid now stays unpaid"), seasonal rate | Both |
 | Primary model | Random Forest, feature set C, calibrated (declared before running) | — |
 | Metrics | Brier score (all and busy blocks, 85%+ paid), calibration error, ROC AUC | Intermediate report |
-| Uncertainty | Paired-day bootstrap on test dates: primary vs persistence, vs seasonal, and C vs B (RQ2) | This repo |
+| Uncertainty | Paired-day bootstrap on test dates: primary vs persistence, vs seasonal, C vs B (RQ2), and D vs C (does the next-hour forecast help?) | This repo |
 | Replay (RQ3) | 10,000 drivers heading to a busy block, 10 min ahead; choose a block within 400 m minimising walk + (1 − p) × fail cost (3, 6, 10 min) | Intermediate report |
 
 ## Outputs
 
 - `results/downtown/supply_summary.json`: Downtown meters by type of use, blocks and choice-set sizes
 - `results/downtown/test_metrics.csv`: every model, feature set and horizon
-- `results/downtown/summary.json`: split dates, test base rate, bootstrap intervals for the three comparisons
+- `results/downtown/summary.json`: split dates, test base rate, Part 1 forecast quality in the area, bootstrap intervals for the four comparisons
+- `results/downtown/part1_hourly_forecasts.csv.gz`: Part 1's next-hour forecast for every block-hour used by Part 2
 - `results/downtown/replay_10min.csv`: first-try success and average walk per strategy
 - `results/figures/downtown_brier_by_horizon.png`, `results/figures/downtown_replay.png`
 

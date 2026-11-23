@@ -11,6 +11,7 @@ sys.path.insert(0, str(ROOT))
 from src.downtown_pipeline import (FEATURE_SETS, add_seasonal, assign_splits, block_panel,  # noqa: E402
                                    build_examples, load_sessions, status_grid)
 from src.downtown_supply import block_table, select_downtown  # noqa: E402
+from src.hourly_forecast import FORECAST_COLUMNS, add_forecast, fit_forecast, hourly_panel  # noqa: E402
 
 DAY = pd.Timestamp('2026-09-15')
 
@@ -103,6 +104,41 @@ class ExampleTests(unittest.TestCase):
         test = flipped.split.ne('train')
         flipped.loc[test, 'y'] = 1 - flipped.loc[test, 'y']
         np.testing.assert_allclose(add_seasonal(flipped).seasonal_rate, self.data.seasonal_rate)
+
+
+class Part1ForecastTests(unittest.TestCase):
+    """Part 1's next-hour forecast must only use earlier hours, and attach to the decision hour."""
+
+    @classmethod
+    def setUpClass(cls):
+        base = ExampleTests
+        base.setUpClass()
+        cls.days = pd.date_range('2026-09-01', '2026-10-10', freq='D')
+        cls.sessions, cls.meters, cls.blocks = base.sessions, base.meters, base.blocks
+        cls.panel = hourly_panel(cls.sessions, cls.meters, cls.blocks, cls.days)
+
+    def test_lags_use_only_earlier_hours(self):
+        changed = self.sessions.copy()
+        cut = pd.Timestamp('2026-09-20 12:00')
+        changed = changed[changed.start < cut]          # remove everything from 12:00 on
+        panel2 = hourly_panel(changed, self.meters, self.blocks, self.days)
+        cols = ['pressure_lag1', 'pressure_lag2', 'pressure_lag24', 'pressure_lag168', 'pressure_rolling3']
+        a = self.panel[self.panel.target_start.eq(cut)][cols].to_numpy()
+        b = panel2[panel2.target_start.eq(cut)][cols].to_numpy()
+        np.testing.assert_allclose(a, b)                 # features for 12:00 ignore 12:00 and later
+
+    def test_forecast_attaches_to_decision_hour(self):
+        data = ExampleTests.data
+        split_dates = {s: sorted(g.date.unique()) for s, g in data.groupby('split')}
+        forecasts, quality = fit_forecast(self.panel, split_dates)
+        self.assertIn(quality['k_selected_on_calibration'], (7, 21, 51))
+        merged = add_forecast(data, forecasts, [1 / 3] * 3)
+        row = merged.iloc[len(merged) // 2]
+        hit = forecasts[(forecasts.blockface_id == row.blockface_id) &
+                        (forecasts.target_start == row.decision_time.floor('h'))]
+        if len(hit):
+            self.assertAlmostEqual(row.p1_high, hit.p1_high.iloc[0])
+        self.assertTrue(np.allclose(merged[FORECAST_COLUMNS].sum(axis=1), 1))
 
 
 class SupplyTests(unittest.TestCase):

@@ -9,6 +9,8 @@ Run after src/downtown_supply.py and src/download_downtown.py:
 Outputs: results/downtown/*.csv, *.json, results/figures/downtown_*.png
 
 Pre-declared primary model: Random Forest with feature set C, isotonic calibration.
+Integration (Part 1 -> Part 2): feature set D adds Part 1's next-hour forecast
+(src/hourly_forecast.py) and is compared with C by the same day bootstrap.
 """
 from __future__ import annotations
 
@@ -32,12 +34,14 @@ sys.path.insert(0, str(ROOT))
 from src.downtown_pipeline import (FEATURE_SETS, HORIZONS, add_seasonal, assign_splits,  # noqa: E402
                                    block_panel, build_examples, load_sessions)
 from src.downtown_supply import distances  # noqa: E402
+from src.hourly_forecast import FORECAST_COLUMNS, add_forecast, fit_forecast, hourly_panel  # noqa: E402
 
 RAW, PROCESSED = ROOT / 'data' / 'raw', ROOT / 'data' / 'processed'
 RESULTS = ROOT / 'results' / 'downtown'
 FIGURES = ROOT / 'results' / 'figures'
 SEED, BUSY, BOOT = 245, 0.85, 2000
 PRIMARY = ('Random Forest', 'C')
+WITH_PART1 = ('Random Forest', 'D')
 REPLAY_H, RADIUS_M, DRIVERS, WALK_M_PER_MIN, FAIL_COST_MIN = 10, 400, 10_000, 80.0, (3, 6, 10)
 
 
@@ -97,10 +101,10 @@ def evaluate(data, h):
     return pd.DataFrame(rows), probs, test
 
 
-def replay(test, p, blocks, rng):
+def replay(test, p, blocks, rng, p_part1=None):
     dist = pd.DataFrame(distances(blocks.latitude.to_numpy(), blocks.longitude.to_numpy()),
                         index=blocks.blockface_id, columns=blocks.blockface_id)
-    test = test.assign(p=p)
+    test = test.assign(p=p, p_d=p if p_part1 is None else p_part1)
     snaps = {t: g.set_index('blockface_id') for t, g in test.groupby('decision_time')}
     busy = test[test.occ_now >= BUSY]
     if busy.empty:
@@ -121,6 +125,9 @@ def replay(test, p, blocks, rng):
         for c in FAIL_COST_MIN:
             choice[f'Model recommendation (fail cost {c} min)'] = int(np.argmin(
                 walk + (1 - snap.p.to_numpy()) * c * WALK_M_PER_MIN))
+            if p_part1 is not None:
+                choice[f'Model + next-hour forecast (fail cost {c} min)'] = int(np.argmin(
+                    walk + (1 - snap.p_d.to_numpy()) * c * WALK_M_PER_MIN))
         out += [{'strategy': k, 'success': bool(ok[v]), 'walk_m': float(walk[v])} for k, v in choice.items()]
     res = pd.DataFrame(out).groupby('strategy').agg(first_try_success=('success', 'mean'),
                                                      avg_walk_m=('walk_m', 'mean'))
@@ -132,11 +139,11 @@ def figures(metrics, rep):
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
     FIGURES.mkdir(parents=True, exist_ok=True)
-    keep = metrics[metrics.features.isin(['C', '-'])]
+    keep = metrics[metrics.features.isin(['C', 'D', '-'])]
     fig, axes = plt.subplots(1, 2, figsize=(11, 4))
     for ax, col, title in ((axes[0], 'brier', 'All blocks'), (axes[1], 'brier_busy', 'Busy blocks (85%+ paid)')):
-        for name, g in keep.groupby('model'):
-            ax.plot(g.horizon_min, g[col], marker='o', label=name)
+        for (name, fs), g in keep.groupby(['model', 'features']):
+            ax.plot(g.horizon_min, g[col], marker='o', label=name if fs == '-' else f'{name} ({fs})')
         ax.set(title=f'Test Brier score, {title}', xlabel='Minutes until arrival',
                ylabel='Brier score (lower is better)', xticks=list(HORIZONS))
     axes[0].legend(fontsize=8)
@@ -164,8 +171,16 @@ def main():
     panel = block_panel(sessions, meters, blocks, days)
     rng = np.random.default_rng(SEED)
     all_metrics, summary, rep = [], {'sessions_used': len(sessions)}, pd.DataFrame()
+    first = add_seasonal(assign_splits(build_examples(panel, blocks, HORIZONS[0])))
+    split_dates = {s: sorted(g.date.unique()) for s, g in first.groupby('split')}
+    forecasts, part1_quality = fit_forecast(hourly_panel(sessions, meters, blocks, days), split_dates)
+    train_fc = forecasts[forecasts.date.isin(pd.to_datetime(list(split_dates['train'])))]
+    priors = [float((train_fc.target_class == c).mean()) for c in range(3)]
+    forecasts.to_csv(RESULTS / 'part1_hourly_forecasts.csv.gz', index=False, compression='gzip')
+    summary['part1_forecast_in_area'] = part1_quality
     for h in HORIZONS:
         data = add_seasonal(assign_splits(build_examples(panel, blocks, h)))
+        data = add_forecast(data, forecasts, priors)
         metrics, probs, test = evaluate(data, h)
         all_metrics.append(metrics)
         p_main = probs[PRIMARY]
@@ -176,9 +191,10 @@ def main():
             'primary_vs_persistence': day_bootstrap(test, p_main, test.any_unpaid_now.to_numpy().astype(float), rng),
             'primary_vs_seasonal': day_bootstrap(test, p_main, test.seasonal_rate.to_numpy(), rng),
             'rq2_C_vs_B_random_forest': day_bootstrap(test, p_main, probs[('Random Forest', 'B')], rng),
+            'integration_D_vs_C_random_forest': day_bootstrap(test, probs[WITH_PART1], p_main, rng),
         }
         if h == REPLAY_H:
-            rep = replay(test, p_main, blocks, rng)
+            rep = replay(test, p_main, blocks, rng, probs[WITH_PART1])
             rep.to_csv(RESULTS / 'replay_10min.csv', index=False)
     metrics = pd.concat(all_metrics, ignore_index=True)
     metrics.to_csv(RESULTS / 'test_metrics.csv', index=False)
