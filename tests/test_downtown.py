@@ -107,14 +107,16 @@ class ExampleTests(unittest.TestCase):
 
 class SupplyTests(unittest.TestCase):
     def test_selection_and_choice_sets(self):
-        base = {'analysis_neighborhood': 'Financial District/South Beach', 'on_offstreet_type': 'ON',
+        base = {'analysis_neighborhood': 'Inner Richmond', 'on_offstreet_type': 'ON', 'meter_vendor': 'MacKay',
                 'active_meter_flag': 'M', 'meter_type': 'SS', 'jurisdiction': 'SFMTA', 'street_name': 'X'}
         rows = [dict(base, post_id='a', blockface_id='1', cap_color='Grey', latitude='37.790', longitude='-122.4'),
                 dict(base, post_id='b', blockface_id='2', cap_color='Green', latitude='37.791', longitude='-122.4'),
                 dict(base, post_id='c', blockface_id='3', cap_color='Yellow', latitude='37.790', longitude='-122.4'),
                 dict(base, post_id='d', blockface_id='4', cap_color='Grey', latitude='37.800', longitude='-122.4'),
                 dict(base, post_id='e', blockface_id='5', cap_color='Grey', latitude='37.79', longitude='-122.4',
-                     analysis_neighborhood='Mission')]
+                     analysis_neighborhood='Mission'),
+                dict(base, post_id='f', blockface_id='6', cap_color='Grey', latitude='37.79', longitude='-122.4',
+                     meter_vendor='IPS')]   # IPS meters report no payments, so they are left out
         meters = select_downtown(pd.DataFrame(rows))
         self.assertEqual(sorted(meters.post_id), ['a', 'b', 'd'])
         blocks = block_table(meters).set_index('blockface_id')

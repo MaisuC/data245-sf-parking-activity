@@ -1,14 +1,19 @@
-"""Downtown supply layer: which spaces an ordinary driver may use, and nearby blocks.
+"""Supply layer for the arrival-time model: which spaces an ordinary driver may use, and nearby blocks.
 
 Adapted from AlaaTarekA/sf-parking-availability (src/sf_supply.py) for this repo.
 Uses the inventory cached by src/download_data.py (data/raw/meters.json).
 
-Selection: Financial District / South Beach, active (M/T) on-street single-space
-SFMTA meters with a grey (general) or green (short-term) cap. Each blockface is a
+Selection: one analysis neighborhood (default Inner Richmond), active (M/T) on-street
+single-space SFMTA meters with a grey (general) or green (short-term) cap, made by a
+vendor that reports payments. In the DataSF transactions for Sep-Oct 2026, IPS meters
+report no payments (the team sample's four silent blocks are all IPS), so only MacKay
+meters are kept. Downtown (Financial District / South Beach) is mostly IPS, so the
+default area is Inner Richmond, which has the most reporting meters (about 800). Each blockface is a
 block; its choice set is every other block with usable spaces within 200 m / 400 m.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -22,7 +27,8 @@ from src.download_data import get_json  # noqa: E402
 
 RAW, PROCESSED = ROOT / 'data' / 'raw', ROOT / 'data' / 'processed'
 RESULTS = ROOT / 'results' / 'downtown'
-NEIGHBORHOOD = 'Financial District/South Beach'
+NEIGHBORHOOD = 'Inner Richmond'
+REPORTING_VENDORS = ['MacKay']
 CAP_USE = {'Grey': 'general', 'Green': 'short-term', 'Yellow': 'commercial loading',
            'Red': 'truck loading', 'Black': 'motorcycle'}
 DRIVER_CAPS = ['Grey', 'Green']
@@ -40,20 +46,22 @@ def load_inventory():
     return inventory
 
 
-def area_profile(frame):
+def area_profile(frame, area_name=NEIGHBORHOOD):
     """Counts for the whole Downtown area, before keeping driver-usable meters."""
-    area = frame[frame.analysis_neighborhood.eq(NEIGHBORHOOD) & frame.on_offstreet_type.eq('ON') &
+    area = frame[frame.analysis_neighborhood.eq(area_name) & frame.on_offstreet_type.eq('ON') &
                  frame.active_meter_flag.isin(['M', 'T'])]
     uses = area.cap_color.map(CAP_USE).fillna('other').value_counts()
     return {'active_on_street_meters': len(area), 'blocks': int(area.blockface_id.nunique()),
             'meters_by_use': {k: int(v) for k, v in uses.items()},
-            'driver_usable_share': round(float(area.cap_color.isin(DRIVER_CAPS).mean()), 3)}
+            'driver_usable_share': round(float(area.cap_color.isin(DRIVER_CAPS).mean()), 3),
+            'meters_by_vendor': {k: int(v) for k, v in area.meter_vendor.value_counts().items()}}
 
 
-def select_downtown(frame):
-    keep = (frame.analysis_neighborhood.eq(NEIGHBORHOOD) & frame.on_offstreet_type.eq('ON') &
+def select_downtown(frame, area_name=NEIGHBORHOOD):
+    keep = (frame.analysis_neighborhood.eq(area_name) & frame.on_offstreet_type.eq('ON') &
             frame.active_meter_flag.isin(['M', 'T']) & frame.meter_type.eq('SS') &
-            frame.cap_color.isin(DRIVER_CAPS) & frame.jurisdiction.eq('SFMTA'))
+            frame.cap_color.isin(DRIVER_CAPS) & frame.jurisdiction.eq('SFMTA') &
+            frame.meter_vendor.isin(REPORTING_VENDORS))
     meters = frame.loc[keep].drop_duplicates('post_id').copy()
     for column in ['blockface_id', 'latitude', 'longitude']:
         meters[column] = pd.to_numeric(meters[column], errors='coerce')
@@ -83,20 +91,23 @@ def block_table(meters):
 
 
 def main():
+    parser = argparse.ArgumentParser(description='Build the supply layer for one neighborhood.')
+    parser.add_argument('--area', default=NEIGHBORHOOD, help='DataSF analysis_neighborhood name')
+    args = parser.parse_args()
     frame = pd.DataFrame(load_inventory())
-    meters = select_downtown(frame)
+    meters = select_downtown(frame, args.area)
     if meters.empty:
-        raise RuntimeError('No Downtown meters selected; check inventory fields.')
+        raise RuntimeError(f'No reporting meters selected in {args.area!r}; check the area name.')
     blocks = block_table(meters)
     PROCESSED.mkdir(parents=True, exist_ok=True)
     RESULTS.mkdir(parents=True, exist_ok=True)
     meters.to_csv(RAW / 'downtown_meters.csv', index=False)
     blocks.to_csv(PROCESSED / 'downtown_blocks.csv', index=False)
-    summary = {'area': area_profile(frame), 'modeled_meters': len(meters),
+    summary = {'area_name': args.area, 'area': area_profile(frame, args.area), 'modeled_meters': len(meters),
                'modeled_blocks': len(blocks), 'caps': meters.cap_color.value_counts().to_dict(),
                **{f'median_blocks_within_{r}m': float(blocks[f'blocks_within_{r}m'].median()) for r in RADII_M},
                **{f'median_spaces_within_{r}m': float(blocks[f'spaces_within_{r}m'].median()) for r in RADII_M},
-               'selection': 'Financial District/South Beach; active M/T, ON, SS, SFMTA; Grey or Green cap.'}
+               'selection': f'{args.area}; active M/T, ON, SS, SFMTA; Grey or Green cap; vendor in {REPORTING_VENDORS}.'}
     (RESULTS / 'supply_summary.json').write_text(json.dumps(summary, indent=2))
     print(json.dumps(summary, indent=2))
 

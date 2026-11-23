@@ -5,16 +5,16 @@ This extension joins two pieces of DATA 245 work:
 - **This repository:** SF payment-data pipeline, calendar and history features, seasonal baseline, date-based split, paired-day bootstrap.
 - **[AlaaTarekA/sf-parking-availability](https://github.com/AlaaTarekA/sf-parking-availability)** (Intermediate Status Report): Downtown supply layer, arrival-time target, paid-time features, probability calibration, choice sets and driver replay. Its method was piloted on Melbourne sensor data.
 
-**Status:** code and tests are ready. It has **not** been run on real Downtown payments yet, because the download must run where data.sfgov.org is reachable. No Downtown results are claimed until it is run.
+**Area:** the first download for Downtown (Financial District / South Beach) returned only 2,363 payments for 1,661 meters over two months. In the DataSF transactions for Sep-Oct 2026, **IPS meters report no payments**; only MacKay meters do. This repo's own sample shows the same thing: its four silent blocks are all IPS. Downtown is mostly IPS, so the model runs on **Inner Richmond** by default, the neighborhood with the most reporting meters (about 800 MacKay meters), and keeps only MacKay meters. Use `--area` to pick another neighborhood.
 
 ## Question
 
-For a Downtown block and a driver arriving in 5, 10 or 15 minutes: what is the probability that **at least one meter on the block has no active payment** at arrival? This is a payment-based proxy, not verified free parking (placard holders, non-payers and early departures are invisible).
+For a block and a driver arriving in 5, 10 or 15 minutes: what is the probability that **at least one meter on the block has no active payment** at arrival? This is a payment-based proxy, not verified free parking (placard holders, non-payers and early departures are invisible).
 
 ## Run it
 
 ```bash
-python src/downtown_supply.py      # Downtown blocks, usable meters, 200/400 m choice sets
+python src/downtown_supply.py      # blocks, usable meters, 200/400 m choice sets (default --area "Inner Richmond")
 python src/download_downtown.py    # session-level payments, Sep 1 - Oct 31, 2026 (needs data.sfgov.org)
 python src/train_downtown.py       # models, calibration, baselines, bootstrap, replay (~5-10 min)
 python -m unittest discover -s tests
@@ -26,8 +26,8 @@ Then commit `data/raw/downtown_meters.csv`, `data/raw/downtown_manifest.json`, `
 
 | Step | Choice | From |
 | --- | --- | --- |
-| Area | Financial District / South Beach | Intermediate report |
-| Meters | Active on-street single-space SFMTA meters, grey or green cap (spaces an ordinary driver may use) | Both (this repo's filter + cap-color analysis) |
+| Area | Inner Richmond by default (`--area`); Downtown has too few reporting meters | Intermediate report, changed after the first download |
+| Meters | Active on-street single-space SFMTA MacKay meters, grey or green cap (spaces an ordinary driver may use and that report payments) | Both (this repo's filter + cap-color analysis) |
 | Paid status | A meter is paid at time *q* if a payment made at or before *q* covers *q*. Add-time payments extend the end only from when they are made, so later extensions never leak into earlier features | New |
 | Target | ≥ 1 meter with no active payment at *t + h*, h = 5, 10, 15 min | Intermediate report |
 | Decisions | Every 10 min, 09:00 onward, arrivals by 18:00, Monday–Saturday; block-days with no payments are treated as missing | This repo's window and silent-day rule |
