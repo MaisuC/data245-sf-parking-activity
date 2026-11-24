@@ -1,0 +1,145 @@
+{
+  "sessions_used": 147328,
+  "5min": {
+    "rows": {
+      "train": 171126,
+      "test": 61344,
+      "calibration": 54702
+    },
+    "split_dates": {
+      "calibration": [
+        "2026-10-10",
+        "2026-10-20"
+      ],
+      "test": [
+        "2026-10-21",
+        "2026-10-31"
+      ],
+      "train": [
+        "2026-09-08",
+        "2026-10-09"
+      ]
+    },
+    "base_rate_test": 0.965,
+    "primary_vs_persistence": {
+      "difference": -0.00085,
+      "ci95": [
+        -0.00102,
+        -0.00068
+      ],
+      "test_days": 10
+    },
+    "primary_vs_seasonal": {
+      "difference": -0.0209,
+      "ci95": [
+        -0.02553,
+        -0.01698
+      ],
+      "test_days": 10
+    },
+    "rq2_C_vs_B_random_forest": {
+      "difference": -0.00049,
+      "ci95": [
+        -0.00059,
+        -0.00039
+      ],
+      "test_days": 10
+    }
+  },
+  "10min": {
+    "rows": {
+      "train": 171126,
+      "test": 61344,
+      "calibration": 54702
+    },
+    "split_dates": {
+      "calibration": [
+        "2026-10-10",
+        "2026-10-20"
+      ],
+      "test": [
+        "2026-10-21",
+        "2026-10-31"
+      ],
+      "train": [
+        "2026-09-08",
+        "2026-10-09"
+      ]
+    },
+    "base_rate_test": 0.966,
+    "primary_vs_persistence": {
+      "difference": -0.00342,
+      "ci95": [
+        -0.00384,
+        -0.003
+      ],
+      "test_days": 10
+    },
+    "primary_vs_seasonal": {
+      "difference": -0.01843,
+      "ci95": [
+        -0.0223,
+        -0.01466
+      ],
+      "test_days": 10
+    },
+    "rq2_C_vs_B_random_forest": {
+      "difference": -0.00193,
+      "ci95": [
+        -0.00219,
+        -0.00169
+      ],
+      "test_days": 10
+    }
+  },
+  "15min": {
+    "rows": {
+      "train": 167957,
+      "test": 60208,
+      "calibration": 53689
+    },
+    "split_dates": {
+      "calibration": [
+        "2026-10-10",
+        "2026-10-20"
+      ],
+      "test": [
+        "2026-10-21",
+        "2026-10-31"
+      ],
+      "train": [
+        "2026-09-08",
+        "2026-10-09"
+      ]
+    },
+    "base_rate_test": 0.964,
+    "primary_vs_persistence": {
+      "difference": -0.00498,
+      "ci95": [
+        -0.00569,
+        -0.00431
+      ],
+      "test_days": 10
+    },
+    "primary_vs_seasonal": {
+      "difference": -0.01781,
+      "ci95": [
+        -0.0217,
+        -0.01434
+      ],
+      "test_days": 10
+    },
+    "rq2_C_vs_B_random_forest": {
+      "difference": -0.00307,
+      "ci95": [
+        -0.00352,
+        -0.00266
+      ],
+      "test_days": 10
+    }
+  },
+  "primary_model": "Random Forest, feature set C, isotonic calibration",
+  "note": "Negative difference = primary model has lower (better) Brier score.",
+  "target": "At least one meter with no active payment at arrival; not verified free parking.",
+  "runtime_seconds": 198.0
+}

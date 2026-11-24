@@ -10,3 +10,5 @@ data/raw/transaction_sample.json
 *.aux
 *.out
 *.toc
+data/raw/downtown_sessions.csv.gz
+data/raw/queries_downtown/
