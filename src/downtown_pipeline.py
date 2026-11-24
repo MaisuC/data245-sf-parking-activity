@@ -19,7 +19,9 @@ ROOT = Path(__file__).resolve().parents[1]
 GRID_MIN = 5                           # status grid resolution, minutes
 STEP_MIN = 10                          # one decision every 10 minutes
 FIRST_DECISION, LAST_ARRIVAL = 9 * 60, 18 * 60   # 09:00 decisions, arrivals by 18:00
-HORIZONS = (5, 10, 15)
+HORIZONS = (5, 10, 15)                 # full model comparison (RQ1, RQ2)
+SWEEP_HORIZONS = (5, 10, 15, 30, 45, 60)  # one question, 5 minutes to 1 hour ahead
+SWEEP_LAST_DECISION = LAST_ARRIVAL - max(SWEEP_HORIZONS)  # same decision times at every horizon
 CALENDAR = ['hour_sin', 'hour_cos', 'dow_sin', 'dow_cos', 'is_saturday']
 STATIC = ['supply', 'latitude', 'longitude']
 HISTORY = ['seasonal_rate', 'occ_lag1d', 'occ_lag7d']
@@ -30,6 +32,14 @@ FEATURE_SETS = {'A': CALENDAR + STATIC + HISTORY,
                 'B': CALENDAR + STATIC + HISTORY + LIVE,
                 'C': CALENDAR + STATIC + HISTORY + LIVE + PAID_TIME,
                 'D': CALENDAR + STATIC + HISTORY + LIVE + PAID_TIME + NEXT_HOUR}
+
+# Clue groups for the horizon sweep. Basics (time and place) are always in.
+BASICS = CALENDAR + STATIC
+PLANNING_CLUES = HISTORY + NEXT_HOUR   # Part 1: weekly rhythm, same time yesterday/last week, next-hour forecast
+LIVE_CLUES = LIVE + PAID_TIME          # Part 2: the street right now
+SWEEP_SETS = {'Planning clues only': BASICS + PLANNING_CLUES,
+              'Live clues only': BASICS + LIVE_CLUES,
+              'Both (one model)': BASICS + PLANNING_CLUES + LIVE_CLUES}
 
 
 def load_sessions(sessions, meters):

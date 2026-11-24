@@ -8,7 +8,7 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from src.downtown_pipeline import (FEATURE_SETS, add_seasonal, assign_splits, block_panel,  # noqa: E402
+from src.downtown_pipeline import (FEATURE_SETS, HISTORY, LIVE_CLUES, NEXT_HOUR, SWEEP_SETS, add_seasonal, assign_splits, block_panel,  # noqa: E402
                                    build_examples, load_sessions, status_grid)
 from src.downtown_supply import block_table, select_downtown  # noqa: E402
 from src.hourly_forecast import FORECAST_COLUMNS, add_forecast, fit_forecast, hourly_panel  # noqa: E402
@@ -104,6 +104,24 @@ class ExampleTests(unittest.TestCase):
         test = flipped.split.ne('train')
         flipped.loc[test, 'y'] = 1 - flipped.loc[test, 'y']
         np.testing.assert_allclose(add_seasonal(flipped).seasonal_rate, self.data.seasonal_rate)
+
+    def test_one_hour_ahead_stays_inside_the_day(self):
+        d = build_examples(self.panel, self.blocks, 60)
+        arrival = d.arrival_time.dt.hour * 60 + d.arrival_time.dt.minute
+        self.assertTrue((arrival <= 18 * 60).all())
+        self.assertTrue((d.arrival_time - d.decision_time == pd.Timedelta(minutes=60)).all())
+        times = list(self.panel['times'])
+        for _, r in d.sample(20, random_state=2).iterrows():
+            j, k = self.panel['blocks'].index(r.blockface_id), times.index(r.decision_time)
+            self.assertEqual(r.unpaid_future, 6 - min(self.panel['paid'][j, k + 12], 6))
+
+    def test_sweep_clue_groups_are_separate(self):
+        plan, live, both = (set(SWEEP_SETS[k]) for k in
+                            ('Planning clues only', 'Live clues only', 'Both (one model)'))
+        self.assertFalse(plan & set(LIVE_CLUES))
+        self.assertFalse(live & (set(HISTORY) | set(NEXT_HOUR)))
+        self.assertEqual(both, plan | live)
+        self.assertEqual(both, set(FEATURE_SETS['D']))
 
 
 class Part1ForecastTests(unittest.TestCase):

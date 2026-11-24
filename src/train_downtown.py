@@ -11,6 +11,13 @@ Outputs: results/downtown/*.csv, *.json, results/figures/downtown_*.png
 Pre-declared primary model: Random Forest with feature set C, isotonic calibration.
 Integration (Part 1 -> Part 2): feature set D adds Part 1's next-hour forecast
 (src/hourly_forecast.py) and is compared with C by the same day bootstrap.
+
+One question, 5 minutes to 1 hour ahead (horizon sweep): at arrival times of
+5, 10, 15, 30, 45 and 60 minutes, one Random Forest is trained with planning clues
+only (Part 1: weekly rhythm, recent days, next-hour forecast), live clues only
+(Part 2: the street now, paid time ending) and both. Removing a group and seeing
+how much worse the model gets shows what that group adds at each horizon. All
+horizons are scored on the same test decision times (09:00-17:00).
 """
 from __future__ import annotations
 
@@ -31,8 +38,9 @@ from sklearn.preprocessing import StandardScaler
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
-from src.downtown_pipeline import (FEATURE_SETS, HORIZONS, add_seasonal, assign_splits,  # noqa: E402
-                                   block_panel, build_examples, load_sessions)
+from src.downtown_pipeline import (FEATURE_SETS, HORIZONS, SWEEP_HORIZONS, SWEEP_LAST_DECISION,  # noqa: E402
+                                   SWEEP_SETS, add_seasonal, assign_splits, block_panel,
+                                   build_examples, load_sessions)
 from src.downtown_supply import distances  # noqa: E402
 from src.hourly_forecast import FORECAST_COLUMNS, add_forecast, fit_forecast, hourly_panel  # noqa: E402
 
@@ -101,6 +109,29 @@ def evaluate(data, h):
     return pd.DataFrame(rows), probs, test
 
 
+def sweep(data, h, rng):
+    """Planning clues vs live clues vs both, one Random Forest each, at horizon h."""
+    train, cal, test = (data[data.split.eq(s)] for s in ('train', 'calibration', 'test'))
+    minute = test.decision_time.dt.hour * 60 + test.decision_time.dt.minute
+    test = test[minute <= SWEEP_LAST_DECISION]
+    y, busy = test.y.to_numpy(), (test.occ_now >= BUSY).to_numpy()
+    rows = [{'horizon_min': h, 'clues': 'Persistence (unpaid now stays unpaid)',
+             **scores(y, test.any_unpaid_now.to_numpy().astype(float), busy)},
+            {'horizon_min': h, 'clues': 'Seasonal rate (block x weekday x hour)',
+             **scores(y, test.seasonal_rate.to_numpy(), busy)}]
+    probs = {}
+    for name, cols in SWEEP_SETS.items():
+        model = models()['Random Forest'].fit(train[cols], train.y)
+        calibrated = CalibratedClassifierCV(FrozenEstimator(model), method='isotonic').fit(cal[cols], cal.y)
+        probs[name] = calibrated.predict_proba(test[cols])[:, 1]
+        rows.append({'horizon_min': h, 'clues': name, **scores(y, probs[name], busy)})
+    both = probs['Both (one model)']
+    added = {'live_clues_add': day_bootstrap(test, both, probs['Planning clues only'], rng),
+             'planning_clues_add': day_bootstrap(test, both, probs['Live clues only'], rng),
+             'base_rate_test': round(float(y.mean()), 3), 'test_rows': int(len(test))}
+    return pd.DataFrame(rows), added
+
+
 def replay(test, p, blocks, rng, p_part1=None):
     dist = pd.DataFrame(distances(blocks.latitude.to_numpy(), blocks.longitude.to_numpy()),
                         index=blocks.blockface_id, columns=blocks.blockface_id)
@@ -160,6 +191,35 @@ def figures(metrics, rep):
         fig.tight_layout(); fig.savefig(FIGURES / 'downtown_replay.png', dpi=160); plt.close(fig)
 
 
+def sweep_figure(table):
+    import matplotlib
+    matplotlib.use('Agg')
+    import matplotlib.pyplot as plt
+    FIGURES.mkdir(parents=True, exist_ok=True)
+    wide = table.pivot(index='horizon_min', columns='clues', values='brier')
+    both = wide['Both (one model)']
+    live_add = (wide['Planning clues only'] - both) / wide['Planning clues only'] * 100
+    plan_add = (wide['Live clues only'] - both) / wide['Live clues only'] * 100
+    fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.2))
+    style = {'Both (one model)': ('#1F8A80', '-'), 'Live clues only': ('#D9822B', '--'),
+             'Planning clues only': ('#3D5A80', '--'), 'Persistence (unpaid now stays unpaid)': ('#9AA5A8', ':'),
+             'Seasonal rate (block x weekday x hour)': ('#6C757D', ':')}
+    for name, (color, ls) in style.items():
+        axes[0].plot(wide.index, wide[name], marker='o', color=color, ls=ls, label=name)
+    axes[0].set(title='Test Brier score by arrival time', xlabel='Minutes until arrival',
+                ylabel='Brier score (lower is better)', xticks=list(SWEEP_HORIZONS))
+    axes[0].legend(fontsize=8)
+    x = np.arange(len(wide.index))
+    axes[1].bar(x - .2, live_add, .4, color='#D9822B', label='Live clues (Part 2)')
+    axes[1].bar(x + .2, plan_add, .4, color='#3D5A80', label='Planning clues (Part 1)')
+    axes[1].set(xticks=x, xticklabels=wide.index, xlabel='Minutes until arrival',
+                ylabel='Error removed by adding the group (%)',
+                title='What each kind of clue adds to the other')
+    axes[1].axhline(0, color='black', lw=.6)
+    axes[1].legend(fontsize=9)
+    fig.tight_layout(); fig.savefig(FIGURES / 'downtown_horizon_sweep.png', dpi=160); plt.close(fig)
+
+
 def main():
     t0 = time.time()
     RESULTS.mkdir(parents=True, exist_ok=True)
@@ -178,9 +238,11 @@ def main():
     priors = [float((train_fc.target_class == c).mean()) for c in range(3)]
     forecasts.to_csv(RESULTS / 'part1_hourly_forecasts.csv.gz', index=False, compression='gzip')
     summary['part1_forecast_in_area'] = part1_quality
+    prepared = {}
     for h in HORIZONS:
         data = add_seasonal(assign_splits(build_examples(panel, blocks, h)))
         data = add_forecast(data, forecasts, priors)
+        prepared[h] = data
         metrics, probs, test = evaluate(data, h)
         all_metrics.append(metrics)
         p_main = probs[PRIMARY]
@@ -196,6 +258,20 @@ def main():
         if h == REPLAY_H:
             rep = replay(test, p_main, blocks, rng, probs[WITH_PART1])
             rep.to_csv(RESULTS / 'replay_10min.csv', index=False)
+    sweep_rows, summary['horizon_sweep'] = [], {
+        'note': 'difference = Brier(both) - Brier(without the group); negative = the group helps.',
+        'test_decisions': f'09:00 to {SWEEP_LAST_DECISION // 60}:00, same for every horizon'}
+    for h in SWEEP_HORIZONS:
+        data = prepared.pop(h, None)
+        if data is None:
+            data = add_forecast(add_seasonal(assign_splits(build_examples(panel, blocks, h))), forecasts, priors)
+        table, added = sweep(data, h, rng)
+        sweep_rows.append(table)
+        summary['horizon_sweep'][f'{h}min'] = added
+        print(f'sweep {h} min done ({time.time() - t0:.0f}s)', flush=True)
+    sweep_table = pd.concat(sweep_rows, ignore_index=True)
+    sweep_table.to_csv(RESULTS / 'horizon_sweep.csv', index=False)
+    sweep_figure(sweep_table)
     metrics = pd.concat(all_metrics, ignore_index=True)
     metrics.to_csv(RESULTS / 'test_metrics.csv', index=False)
     summary.update({'primary_model': f'{PRIMARY[0]}, feature set {PRIMARY[1]}, isotonic calibration',
@@ -206,6 +282,7 @@ def main():
     figures(metrics, rep)
     print(metrics.to_string(index=False))
     print(rep.to_string(index=False))
+    print(sweep_table.to_string(index=False))
     print(json.dumps(summary, indent=2, default=str))
 
 

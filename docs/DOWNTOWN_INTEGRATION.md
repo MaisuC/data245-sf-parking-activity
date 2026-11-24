@@ -62,3 +62,26 @@ Then commit `data/raw/downtown_meters.csv`, `data/raw/downtown_manifest.json`, `
 - Meter operating hours differ by block and are not verified; 09:00–18:00 is a fixed analysis window.
 - Straight-line distances for choice sets; simulated drivers do not compete for the same space.
 - The test period is about ten dates; bootstrap intervals are descriptive.
+
+## One question, 5 minutes to 1 hour ahead
+
+The project asks one question: *will I find a space with no active payment when I
+arrive?* `src/train_downtown.py` now also answers it for arrivals 5, 10, 15, 30, 45
+and 60 minutes ahead, with one Random Forest trained three ways:
+
+| Clue group | Comes from | Features |
+|---|---|---|
+| Basics | both | time of day, weekday, block size and location |
+| Planning clues | Part 1 | weekly rhythm (seasonal rate), same time yesterday / last week, next-hour forecast |
+| Live clues | Part 2 | spaces paid now, recent changes, new payments, paid time ending in 15 min |
+
+*Planning only*, *live only* and *both* are compared at each horizon on the same
+test decision times (09:00-17:00). Removing a group and measuring how much worse
+the model gets shows what that group adds; the day bootstrap gives a 95% interval.
+
+Outputs: `results/downtown/horizon_sweep.csv`, `summary.json` → `horizon_sweep`,
+`results/figures/downtown_horizon_sweep.png`.
+
+Honest limit: the next-hour forecast is the one for the hour that contains the
+decision time. A forecast for the following hour would need that hour's lag-1
+value, which is not known yet at decision time.
